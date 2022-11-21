@@ -1,8 +1,9 @@
 class Rent < ApplicationRecord
-  has_many :user
-  has_many :bike
+  belongs_to :user
+  belongs_to :bike
 
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :total_price, presence: true
+  validates :statuts, presence: true
 end
