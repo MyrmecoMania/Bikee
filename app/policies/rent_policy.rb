@@ -6,8 +6,16 @@ class RentPolicy < ApplicationPolicy
     # end
   end
 
+  def new?
+    create?
+  end
+
   def create?
     record.bike.user != user
+  end
+
+  def edit?
+    true
   end
 
   def update?
