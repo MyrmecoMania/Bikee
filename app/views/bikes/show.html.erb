@@ -12,6 +12,7 @@
     <% if policy(@bike).edit? %>
       <%= link_to "Edit", edit_bike_path(@bike) %>
     <% end %>
+    <%= link_to "Rent this bike", new_bike_rent_path(@bike) %>
     <%= button_to "Delete this bike", @bike, method: :delete if policy(@bike).destroy? %>
   </div>
 </div>
