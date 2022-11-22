@@ -3,8 +3,8 @@ class BikesController < ApplicationController
 
   def index
 
-    if params[:search][:query].present?
-      @bikes = Bike.where("address ILIKE ?", "%#{params[:search][:query]}%")
+    if params[:query].present?
+      @bikes = policy_scope(Bike.where("address ILIKE ?", "%#{params[:query]}%"))
     else
       @bikes = policy_scope(Bike)
     end
