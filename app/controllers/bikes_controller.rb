@@ -1,8 +1,8 @@
 class BikesController < ApplicationController
   before_action :set_bike, only: %i[show edit destroy update]
+  # skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-
     if params[:query].present?
       @bikes = policy_scope(Bike.where("address ILIKE ?", "%#{params[:query]}%"))
     else
@@ -11,7 +11,6 @@ class BikesController < ApplicationController
   end
 
   def show
-    # @bike = Bike.find(params[:id])
     authorize @bike
   end
 
@@ -33,7 +32,6 @@ class BikesController < ApplicationController
   end
 
   def edit
-    # @bike = Bike.find(params[:id])
     authorize @bike
   end
 
@@ -47,7 +45,6 @@ class BikesController < ApplicationController
   end
 
   def destroy
-    # @bike = Bike.find(params[:id])
     authorize @bike
     @bike.destroy
     redirect_to bikes_path, status: :see_other
