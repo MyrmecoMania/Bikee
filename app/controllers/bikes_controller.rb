@@ -2,7 +2,12 @@ class BikesController < ApplicationController
   before_action :set_bike, only: %i[show edit destroy update]
 
   def index
-    @bikes = policy_scope(Bike)
+
+    if params[:search][:query].present?
+      @bikes = Bike.where("address ILIKE ?", "%#{params[:search][:query]}%")
+    else
+      @bikes = policy_scope(Bike)
+    end
   end
 
   def show
