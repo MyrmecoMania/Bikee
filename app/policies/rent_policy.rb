@@ -7,7 +7,7 @@ class RentPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.bike.user != user
   end
 
   def update?
