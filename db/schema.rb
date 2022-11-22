@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_21_163929) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_rents_on_user_id"
   end
-  
+
   create_table "bikes", force: :cascade do |t|
     t.string "category"
     t.string "brand"
