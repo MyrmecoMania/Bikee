@@ -3,12 +3,14 @@ class RentsController < ApplicationController
 
   def new
     @rent = Rent.new
+    authorize @rent
   end
 
   def create
     @rent = Rent.new(rent_params)
     @rent.user = current_user
     @rent.bike = Bike.find(params[:bike_id])
+    authorize @rent
     if @rent.save
       redirect_to dashboard_path
     else
@@ -17,9 +19,11 @@ class RentsController < ApplicationController
   end
 
   def edit
+    authorize @rent
   end
 
   def update
+    authorize @rent
     if @rent.update(rent_params)
       redirect_to dashboard_path
     else
@@ -28,6 +32,7 @@ class RentsController < ApplicationController
   end
 
   def destroy
+    authorize @rent
     @rent.destroy
   end
 
