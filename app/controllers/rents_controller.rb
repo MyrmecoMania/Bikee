@@ -3,7 +3,7 @@ class RentsController < ApplicationController
 
   def new
     @bike = Bike.find(params[:bike_id])
-    @rent = Rent.new
+    @rent = Rent.new(bike_id: @bike.id)
     authorize @rent
   end
 
@@ -20,6 +20,8 @@ class RentsController < ApplicationController
   end
 
   def edit
+    # @bike = Bike.find(params[:bike_id])
+    # @rent = @bike.rent
     authorize @rent
   end
 
@@ -28,7 +30,7 @@ class RentsController < ApplicationController
     if @rent.update(rent_params)
       redirect_to dashboard_path
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -44,7 +46,7 @@ class RentsController < ApplicationController
   end
 
   def set_rent
-    bike = Bike.find(params[:bike_id])
-    @rent = bike.rent
+    @bike = Bike.find(params[:bike_id])
+    @rent = @bike.rent
   end
 end
