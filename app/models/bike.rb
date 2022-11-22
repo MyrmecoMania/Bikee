@@ -1,6 +1,6 @@
 class Bike < ApplicationRecord
   belongs_to :user
-  belongs_to :rent
+  has_one :rent
 
   validates :category, presence: true
   validates :price_per_day, presence: true, numericality: { only_integer: true }
