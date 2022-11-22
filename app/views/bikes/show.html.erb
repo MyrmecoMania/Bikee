@@ -1,2 +1,17 @@
-<h1>Bikes#show</h1>
-<p>Find me in app/views/bikes/show.html.erb</p>
+<div class="container">
+  <div class="col-4 offset-4">
+    <h1 class="text-center"><%#= @bike.model %> Bike model</h1>
+    <p><%= @bike.category %></p>
+    <% if @bike.brand %>
+      <p><%= @bike.brand %></p>
+    <% end %>
+    <p><%= @bike.status ? 'Available' : 'Unavailable' %></p>
+    <p><%= @bike.price_per_day %></p>
+    <p><%= @bike.address %></p>
+    <p><%= @bike.user.email %></p>
+    <% if policy(@bike).edit? %>
+      <%= link_to "Edit", edit_bike_path(@bike) %>
+    <% end %>
+    <%= button_to "Delete this bike", @bike, method: :delete if policy(@bike).destroy? %>
+  </div>
+</div>
