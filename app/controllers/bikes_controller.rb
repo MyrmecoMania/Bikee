@@ -2,24 +2,29 @@ class BikesController < ApplicationController
   before_action :set_bike, only: %i[show edit destroy update]
 
   def index
+
     if params[:search][:query].present?
       @bikes = Bike.where("address ILIKE ?", "%#{params[:search][:query]}%")
     else
-      @bikes = Bike.all
+      @bikes = policy_scope(Bike)
     end
   end
 
   def show
-    @bike = Bike.find(params[:id])
+    # @bike = Bike.find(params[:id])
+    authorize @bike
   end
 
   def new
     @bike = Bike.new
+    authorize @bike
   end
 
   def create
     @bike = Bike.new(bike_params)
     @bike.user = current_user
+    authorize @bike
+
     if @bike.save
       redirect_to bike_path(@bike)
     else
@@ -29,9 +34,11 @@ class BikesController < ApplicationController
 
   def edit
     # @bike = Bike.find(params[:id])
+    authorize @bike
   end
 
   def update
+    authorize @bike
     if @bike.update(bike_params)
       redirect_to bike_path(@bike)
     else
@@ -41,6 +48,7 @@ class BikesController < ApplicationController
 
   def destroy
     # @bike = Bike.find(params[:id])
+    authorize @bike
     @bike.destroy
     redirect_to bikes_path, status: :see_other
   end
