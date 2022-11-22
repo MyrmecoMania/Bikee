@@ -10,7 +10,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item active">
-            <%= link_to "Mettre mon vélo en location", new_bike_path, class: "nav-link" %>
+            <% if  user_signed_in?%>
+              <%= link_to "Mettre mon vélo en location", new_bike_path, class: "nav-link" %>
+            <% else %>
+              <%= link_to "Mettre mon vélo en location", new_user_session_path, class: "nav-link" %>
+            <% end %>
           </li>
           <% if user_signed_in? == false %>
             <li class="nav-item">
