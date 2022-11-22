@@ -2,7 +2,7 @@ class BikesController < ApplicationController
   before_action :set_bike, only: %i[show edit destroy update]
 
   def index
-    @bikes = policy_scorpe(Bike)
+    @bikes = policy_scope(Bike)
   end
 
   def show
