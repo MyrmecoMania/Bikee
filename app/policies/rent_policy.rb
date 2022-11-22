@@ -7,11 +7,11 @@ class RentPolicy < ApplicationPolicy
   end
 
   def create?
-    !record.bike.user == user
+    record.bike.user != user
   end
 
   def update?
-    record.user == user # && !record.bike.user == user
+    record.user == user || record.bike.user == user
   end
 
   def destroy?
