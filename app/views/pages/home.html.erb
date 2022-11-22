@@ -1,37 +1,58 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://vttelectriques.fr/wp-content/uploads/2021/03/femme-ave-un-VTT-electrique.jpg);">
   <div class="container">
     <h1>Louez un vélo à un particulier</h1>
-    <a class="btn btn-danger" href="#">Louez un vélo</a>
+    <%= link_to "Louez un vélo", bikes_path, class: "btn btn-danger" %>
   </div>
 </div>
 
-<div>
-  <div class= "container mt-4" >
-      <%= simple_form_for :query, url: bikes_path, method: :get do |f| %>
-        <div class="search-form-control form-group">
-          <input class="form-control string required mb-2" placeholder="Dans quelle ville voulez-vous louer un vélo ?" type="text" name="query" id="search_query" />
-          <button name="button" type="submit" class="btn btn-danger btn-flat">
-            <i class="fas fa-search"></i> Search
-          </button>
-        </div>
-      <% end %>
-  </div>
-</div>
 
 <div class= "container mt-4" >
-  <h2>Comment ça marche ?</h2>
-
-  <div class="cards mt-4 mb-4">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://static.wixstatic.com/media/8647db_f0b09c911d094122b14c83b6204bc45f~mv2.jpg/v1/fill/w_640,h_330,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/8647db_f0b09c911d094122b14c83b6204bc45f~mv2.jpg)">
-      1. Je choisis un vélo
+  <%= simple_form_for :query, url: bikes_path, method: :get do |f| %>
+    <div class="search-form-control form-group">
+      <input class="form-control string required mb-2" placeholder="Dans quelle ville voulez-vous louer un vélo ?" type="text" name="query" id="search_query" />
+      <button name="button" type="submit" class="btn btn-danger btn-flat">
+        <i class="fas fa-search"></i> Search
+      </button>
     </div>
+  <% end %>
 
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://d1pk12b7bb81je.cloudfront.net/generated/1920x910/images/photos/slideshows/1481920699_1481920687-bikingslideshow.jpg)">
-      2. Je réserve
-    </div>
 
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://photos.altai-travel.com/1920x0/promenade-a-vtt-dun-couple-devant-un-lac-24408.jpg)">
-      3. En route !
+  <div class= "how-it-work">
+    <h2>Comment ça marche ?</h2>
+
+    <div class="cards mt-4 mb-4">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://static.wixstatic.com/media/8647db_f0b09c911d094122b14c83b6204bc45f~mv2.jpg/v1/fill/w_640,h_330,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/8647db_f0b09c911d094122b14c83b6204bc45f~mv2.jpg)">
+        1. Je choisis un vélo
+      </div>
+
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://d1pk12b7bb81je.cloudfront.net/generated/1920x910/images/photos/slideshows/1481920699_1481920687-bikingslideshow.jpg)">
+        2. Je réserve
+      </div>
+
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://photos.altai-travel.com/1920x0/promenade-a-vtt-dun-couple-devant-un-lac-24408.jpg)">
+        3. En route !
+      </div>
     </div>
+  </div>
+
+  <h2 class="my-5">Dernières suggestions </h2>
+  <div class="cards last-suggest">
+    <% Bike.all.shuffle[1..3].each do |bike| %>
+      <div class="card-trip">
+        <img class="p-4" src="https://contents.mediadecathlon.com/p1732638/k$257bcaad093414d7ba6573e216ad94aa/sq/vtt-enfant-rockrider-st-900-24-pouces-9-12-ans-rouge.jpg?format=auto&f=969x969" />
+        <div class="card-trip-infos">
+          <div>
+            <h2 class="text-start"><%= link_to bike.category, bike_path(bike) %></h2>
+            <% if bike.status == true %>
+              <p>Disponible</p>
+            <% else %>
+              <p>Non disponible</p>
+            <% end %>
+            <p><%= bike.address %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= bike.price_per_day %> €</h2>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
