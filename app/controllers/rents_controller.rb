@@ -2,6 +2,7 @@ class RentsController < ApplicationController
   before_action :set_rent, only: %i[edit update destroy]
 
   def new
+    @bike = Bike.find(params[:bike_id])
     @rent = Rent.new
   end
 
@@ -34,7 +35,7 @@ class RentsController < ApplicationController
   private
 
   def rent_params
-    parmas.require(:rent).permit(:status, :start_date, :end_date)
+    params.require(:rent).permit(:status, :start_date, :end_date)
   end
 
   def set_rent

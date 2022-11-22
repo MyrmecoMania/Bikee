@@ -1,2 +1,11 @@
-<h1>Rents#new</h1>
-<p>Find me in app/views/rents/new.html.erb</p>
+<div class="container mt-5">
+  <h2 class="text-center">Rent <%= @bike.category %></h2>
+  <div class="col-6 offset-3">
+    <%= simple_form_for [@bike, @rent] do |f| %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
+      <%= f.input :status %>
+      <%= f.submit class:"btn-danger" %>
+    <% end %>
+  </div>
+</div>
