@@ -1,0 +1,9 @@
+<div class="container">
+  <h1 class="text-center">Profile</h1>
+  <h4>Email: <%= current_user.email %></h2>
+  <% current_user.bikes.each do |bike| %>
+  <div class="text-center">Bikes</div>
+    <p>Category: <%= bike.category  %></p>
+    <p><%= bike.price_per_day %>$ per day</p>
+  <% end %>
+</div>
