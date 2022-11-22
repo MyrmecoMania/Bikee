@@ -34,7 +34,7 @@ class RentsController < ApplicationController
   private
 
   def rent_params
-    parmas.require(:rent).permit(:total_price, :status, :start_date, :end_date, :user_id, :bike_id)
+    parmas.require(:rent).permit(:status, :start_date, :end_date)
   end
 
   def set_rent
