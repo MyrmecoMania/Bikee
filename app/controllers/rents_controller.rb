@@ -1,5 +1,6 @@
 class RentsController < ApplicationController
   before_action :set_bike, only: %i[new create edit update destroy]
+  before_action :set_rent, only: %i[edit update]
 
   def new
     @rent = Rent.new(bike_id: @bike.id)
@@ -10,7 +11,7 @@ class RentsController < ApplicationController
     @rent = Rent.new(rent_params)
     @rent.user = current_user
     @rent.bike = @bike
-    @rent.status = true
+    @rent.status = true # l'ajouter dans le model rent par default
     authorize @rent
     if @rent.save
       redirect_to dashboard_path
@@ -20,8 +21,6 @@ class RentsController < ApplicationController
   end
 
   def edit
-    # @bike = Bike.find(params[:bike_id])
-    # @rent = @bike.rent
     authorize @rent
   end
 
@@ -47,5 +46,9 @@ class RentsController < ApplicationController
 
   def set_bike
     @bike = Bike.find(params[:bike_id])
+  end
+
+  def set_rent
+    @rent = Rent.find(params[:id])
   end
 end

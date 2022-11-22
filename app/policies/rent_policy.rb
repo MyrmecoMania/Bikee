@@ -15,11 +15,11 @@ class RentPolicy < ApplicationPolicy
   end
 
   def edit?
-    true
+    destroy?
   end
 
   def update?
-    record.user == user || record.bike.user == user
+    destroy?
   end
 
   def destroy?
