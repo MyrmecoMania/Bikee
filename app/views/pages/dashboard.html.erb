@@ -1,9 +1,27 @@
 <div class="container">
   <h1 class="text-center">Profile</h1>
-  <h4>Email: <%= current_user.email %></h2>
-  <% current_user.bikes.each do |bike| %>
-  <div class="text-center">Bikes</div>
-    <p>Category: <%= bike.category  %></p>
-    <p><%= bike.price_per_day %>$ per day</p>
-  <% end %>
+  <h4 class="pb-2 border-bottom">Email: <%= current_user.email %></h2>
+
+  <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="feature col">
+      <i class="fa-solid fa-address-card fs-2"></i>
+      <h3 class="fs-5 mt-3">Informations personnelles</h3>
+      <p>Fournissez des renseignements personnels</p>
+    </div>
+    <div class="feature col">
+      <i class="fa-solid fa-shield-halved fs-2"></i>
+      <h3 class="fs-5 mt-3">Connexion et securité</h3>
+      <p>Mettez à jour votre mot de passe</p>
+    </div>
+    <div class="feature col">
+      <% current_user.bikes.each do |bike| %>
+      <i class="fa-solid fa-bicycle fs-2"></i>
+      <h3 class="fs-5 mt-3">Mon garage</h3>
+      <p>Ajouter vos vélos à louer</p>
+      <p>Catégorie: <%= bike.category  %></p>
+      <p><%= bike.price_per_day %>€ par jour</p>
+      <% end %>
+    </div>
+
+  </div>
 </div>
