@@ -1,12 +1,10 @@
 <div class="container">
-  <h1 class="text-center">Profile</h1>
-  <h4 class="pb-2 border-bottom">Email: <%= current_user.email %></h2>
-
+  <h1 class="text-center border-bottom py-3">My profile</h1>
   <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
     <div class="feature col">
       <i class="fa-solid fa-address-card fs-2"></i>
       <h3 class="fs-5 mt-3">Informations personnelles</h3>
-      <p>Fournissez des renseignements personnels</p>
+      <p>Email: <%= current_user.email %></p>
     </div>
     <div class="feature col">
       <i class="fa-solid fa-shield-halved fs-2"></i>
@@ -14,14 +12,13 @@
       <p>Mettez à jour votre mot de passe</p>
     </div>
     <div class="feature col">
-      <% current_user.bikes.each do |bike| %>
       <i class="fa-solid fa-bicycle fs-2"></i>
-      <h3 class="fs-5 mt-3">Mon garage</h3>
-      <p>Ajouter vos vélos à louer</p>
-      <p>Catégorie: <%= bike.category  %></p>
-      <p><%= bike.price_per_day %>€ par jour</p>
+      <h3 class="fs-5 mt-3">Vos vélos</h3>
+      <% current_user.bikes.each do |bike| %>
+        <p class="border-top mt-2 pt-1">Catégorie: <%= bike.category  %></p>
+        <p><%= bike.price_per_day %>€ par jour</p>
+        <%= link_to "See bike", bike_path(bike) %>
       <% end %>
     </div>
-
   </div>
 </div>
