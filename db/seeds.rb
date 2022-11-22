@@ -15,11 +15,3 @@ arr.each do |el|
   Bike.create(category: "VTT", address: "16 villa Gaudelet", status: true, price_per_day: 40, user: new_user)
   Bike.create(category: "VTT", address: "16 villa Gaudelet Paris", status: true, price_per_day: 40, user: new_user)
 end
-
-# require 'json'
-# require 'open-uri'
-# # Authorization: Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50TmFtZSI6ImdhdXRpZXJkYXZpZCIsInZlcnNpb24iOjEsImlhdCI6MTY2OTA2NTM2MX0.7L3CkzuqP3npwzeBh6UG2v77GSXXT5WkNdlM44ht4Ec"
-# data = URI.open("https://api.99spokes.com/v1/bikes?include=images",
-#   "Authorization" => "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50TmFtZSI6ImdhdXRpZXJkYXZpZCIsInZlcnNpb24iOjEsImlhdCI6MTY2OTA2NTM2MX0.7L3CkzuqP3npwzeBh6UG2v77GSXXT5WkNdlM44ht4Ec"
-# ).read
-# JSON.parse(data)
