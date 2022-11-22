@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'rents/new'
+  get 'rents/create'
+  get 'rents/edit'
+  get 'rents/update'
+  get 'rents/destroy'
   root to: "pages#home"
   resources :bikes
   get "dashboard", to: "pages#dashboard"
