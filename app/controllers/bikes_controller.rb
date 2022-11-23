@@ -2,12 +2,19 @@ class BikesController < ApplicationController
   before_action :set_bike, only: %i[show edit destroy update]
 
   def index
-
-    if params[:query].present?
-      @bikes = policy_scope(Bike.where("address ILIKE ?", "%#{params[:query]}%"))
-    else
-      @bikes = policy_scope(Bike)
+    @bikes = policy_scope(Bike)
+    @markers = @bikes.geocoded.map do |bike|
+      {
+        lat: bike.latitude,
+        lng: bike.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { bike: bike })
+      }
     end
+    # if
+    # params[:query].present?
+    #   @bikes = policy_scope(Bike.where("address ILIKE ?", "%#{params[:query]}%"))
+    # else
+    #   @bikes = policy_scope(Bike)
   end
 
   def show
