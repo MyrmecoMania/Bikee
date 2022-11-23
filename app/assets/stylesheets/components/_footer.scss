@@ -5,7 +5,8 @@
   align-items: flex-start;
   width: 100%;
   border-top: 0.0625rem solid;
-  margin-top: 2rem; 
+  margin-top: 2rem;
+  background-color: white;
 }
 
 .footer__container--padded{
@@ -14,7 +15,7 @@
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  padding: 4.5rem 9.75rem;
+  padding: 2.5rem 20.75rem;
 }
 
 .footerSection__title{
@@ -48,10 +49,9 @@
 
 .footer__legal{
   text-align: center;
+  font-family: var(--fontLabor);
 }
 
-.footer__text{
-}
 
 a{
   color: black;
