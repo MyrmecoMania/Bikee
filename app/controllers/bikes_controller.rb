@@ -3,11 +3,20 @@ class BikesController < ApplicationController
   # skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-    if params[:query].present?
-      @bikes = policy_scope(Bike.where("address ILIKE ?", "%#{params[:query]}%"))
-    else
-      @bikes = policy_scope(Bike)
+    @bikes = policy_scope(Bike)
+    @markers = @bikes.geocoded.map do |bike|
+      {
+        lat: bike.latitude,
+        lng: bike.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { bike: bike })
+      }
     end
+    
+    # if
+    # params[:query].present?
+    #   @bikes = policy_scope(Bike.where("address ILIKE ?", "%#{params[:query]}%"))
+    # else
+    #   @bikes = policy_scope(Bike)
   end
 
   def show
