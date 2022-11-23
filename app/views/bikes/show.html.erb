@@ -9,6 +9,9 @@
     <p><%= @bike.price_per_day %></p>
     <p><%= @bike.address %></p>
     <p><%= @bike.user.email %></p>
+    <% @bike.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
     <% if policy(@bike).edit? %>
       <%= link_to "Edit", edit_bike_path(@bike) %>
     <% end %>
