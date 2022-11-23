@@ -1,18 +1,27 @@
+
+
 <div class="container">
-  <div class="col-4 offset-4">
-    <h1 class="text-center"><%#= @bike.model %> Bike model</h1>
-    <p><%= @bike.category %></p>
-    <% if @bike.brand %>
-      <p><%= @bike.brand %></p>
-    <% end %>
-    <p><%= @bike.status ? 'Available' : 'Unavailable' %></p>
-    <p><%= @bike.price_per_day %></p>
-    <p><%= @bike.address %></p>
-    <p><%= @bike.user.email %></p>
-    <% if policy(@bike).edit? %>
-      <%= link_to "Edit", edit_bike_path(@bike) %>
-    <% end %>
-    <%= link_to "Rent this bike", new_bike_rent_path(@bike) %>
-    <%= button_to "Delete this bike", @bike, method: :delete if policy(@bike).destroy? %>
+<div class="col-6 offset-3">
+<h1 class="text-center"><%#= @bike.model %> Details du vélo</h1>
+  <div class="card-trip">
+    <img src="https://vttelectriques.fr/wp-content/uploads/2021/03/femme-ave-un-VTT-electrique.jpg" />
+    <div class="card-trip-infos">
+      <div>
+        <h3><%= @bike.category %></h3>
+        <p> </p>
+        <% if @bike.brand %>
+          <p><%= @bike.brand %></p>
+        <% end %>
+        <p><%= @bike.status ? 'Disponible' : 'Indisponible' %></p>
+        <p><%= @bike.address %></p>
+        <% if policy(@bike).edit? %>
+          <%= link_to "Edit", edit_bike_path(@bike) %>
+        <% end %>
+        <%= link_to "Rent this bike", new_bike_rent_path(@bike) %>
+        <p><%= button_to "Delete this bike", @bike, method: :delete if policy(@bike).destroy? %></p>
+      </div>
+      <h2 class="card-trip-pricing"><%= @bike.price_per_day %> €</h2>
+    </div>
   </div>
+</div>
 </div>
