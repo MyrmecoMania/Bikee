@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_093206) do
   create_table "bikes", force: :cascade do |t|
     t.string "category"
     t.string "brand"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.integer "price_per_day"
     t.string "address"
     t.bigint "user_id", null: false
@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_23_093206) do
 
   create_table "rents", force: :cascade do |t|
     t.integer "total_price"
-    t.string "status"
+    t.string "status", default: "waiting"
     t.date "start_date"
     t.date "end_date"
     t.bigint "user_id", null: false
