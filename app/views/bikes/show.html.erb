@@ -4,7 +4,9 @@
 <div class="col-6 offset-3">
 <h1 class="text-center"><%#= @bike.model %> Details du vélo</h1>
   <div class="card-trip">
-    <img src="https://vttelectriques.fr/wp-content/uploads/2021/03/femme-ave-un-VTT-electrique.jpg" />
+     <% @bike.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
     <div class="card-trip-infos">
       <div>
         <h3><%= @bike.category %></h3>
@@ -21,7 +23,7 @@
         <p><%= button_to "Delete this bike", @bike, method: :delete if policy(@bike).destroy? %></p>
       </div>
       <h2 class="card-trip-pricing"><%= @bike.price_per_day %> €</h2>
-    </div>
+    </div>  
   </div>
 </div>
 </div>
