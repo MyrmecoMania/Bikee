@@ -11,11 +11,9 @@ module BikeConcern
   end
 
   def booked_dates_json_objects
+    keys = [:from, :to]
     simple_format_booked_dates.map do |dates_arr|
-      {
-        from: dates_arr.first,
-        to: dates_arr.last
-      }
+      Hash[keys.zip(dates_arr)]
     end
   end
 
