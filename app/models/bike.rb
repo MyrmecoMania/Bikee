@@ -1,6 +1,8 @@
 class Bike < ApplicationRecord
+  include BikeConcern
+
   belongs_to :user
-  has_one :rent
+  has_many :rents
 
 
   has_many_attached :photos
