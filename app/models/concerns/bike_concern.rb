@@ -2,7 +2,6 @@ module BikeConcern
   def booked_dates
     # renvoie un array d'array des dates de debut et de fin de tous les bookings du pokemon
     rents.pluck(:start_date, :end_date)
-    # raise
   end
 
   def simple_format_booked_dates

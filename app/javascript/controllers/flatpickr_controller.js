@@ -9,25 +9,22 @@ export default class extends Controller {
 
   connect() {
     this.#initFlatPickr()
-
-    flatpickr(this.startDateInputTarget, {
-      mode: 'multiple',
-      "plugins": [new rangePlugin({ input: this.endDateInputTarget})],
-      minDate : "today",
-      // dateFormat: "d/m/Y",
-
-    })
   }
 
   #initFlatPickr() {
-    flatpickr(".datepicker", this.#options());
+    flatpickr(this.startDateInputTarget, this.#options());
   }
 
   #options() {
     return {
+      // dateFormat: "Y-m-d", disable: [{ from: date, to: date }, { from: date,to: date }]
       ...this.#parsedBookedDates(),
-      enableTime: true,
-      minDate: new Date(),
+      // fonctionne lorsque je le fais en dur
+      disable: [{from: "2022-11-23", to: "2022-11-30"}],
+      mode: 'range',
+      "plugins": [new rangePlugin({ input: this.endDateInputTarget})],
+      dateFormat: "Y-m-d",
+      minDate: "today",
     }
   }
 
