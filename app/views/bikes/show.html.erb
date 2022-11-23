@@ -1,29 +1,34 @@
-
-
-<div class="container">
-<div class="col-6 offset-3">
-<h1 class="text-center"><%#= @bike.model %> Details du vélo</h1>
-  <div class="card-trip">
-     <% @bike.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <div class="card-trip-infos">
-      <div>
-        <h3><%= @bike.category %></h3>
-        <p> </p>
-        <% if @bike.brand %>
-          <p><%= @bike.brand %></p>
+<div class="container show-page">
+  <div class="col-4 offset-4">
+  <h1 class="text-center mt-3 mb-5">Details du vélo de <%= @bike.user.email %></h1>
+    <div class="card-details p-3 rounded mb-5">
+      <div class="card-details-image">
+        <% @bike.photos.each do |photo| %>
+          <%= cl_image_tag photo.key %>
         <% end %>
-        <p><%= @bike.status ? 'Disponible' : 'Indisponible' %></p>
-        <p><%= @bike.address %></p>
-        <% if policy(@bike).edit? %>
-          <%= link_to "Edit", edit_bike_path(@bike) %>
-        <% end %>
-        <%= link_to "Rent this bike", new_bike_rent_path(@bike) %>
-        <p><%= button_to "Delete this bike", @bike, method: :delete if policy(@bike).destroy? %></p>
       </div>
-      <h2 class="card-trip-pricing"><%= @bike.price_per_day %> €</h2>
-    </div>  
+      <hr class="w-100 py-1">
+      <div class="card-details-content">
+        <div>
+          <p>Type : <%= @bike.category %></p>
+          <% if @bike.brand %>
+            <p>Marque : <%= @bike.brand %></p>
+          <% end %>
+          <p>Statuts : <%= @bike.status ? 'Disponible' : 'Indisponible' %></p>
+          <p>Adresse : <%= @bike.address %></p>
+          <p class="card-detais-price">Prix par jour : <%= @bike.price_per_day %> €</p>
+          <hr class="pt-2">
+          <div class="d-flex justify-content-around">
+            <% if policy(@bike).edit? %>
+              <%= link_to "Modifier", edit_bike_path(@bike), class:"btn btn-danger rounded" %>
+            <% end %>
+            <% if @bike.user != current_user %>
+              <%= link_to "Réserver", new_bike_rent_path(@bike), class:"btn btn-danger rounded" %>
+            <% end %>
+            <%= button_to "Supprimer", @bike, method: :delete, class:"btn btn-danger rounded" if policy(@bike).destroy? %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </div>
