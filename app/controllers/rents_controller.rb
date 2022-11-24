@@ -11,7 +11,6 @@ class RentsController < ApplicationController
     @rent = Rent.new(rent_params)
     @rent.user = current_user
     @rent.bike = @bike
-    @rent.status = true # l'ajouter dans le model rent par default
     authorize @rent
     if @rent.save
       redirect_to dashboard_path
