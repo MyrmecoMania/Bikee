@@ -31,7 +31,7 @@
           <%# component bike %>
           <div class="border rounded overflow-hidden mb-4 shadow-sm position-relative">
             <figure class="h-md-250 p-4 bg-white d-flex align-items-center justify-content-center">
-              <%= cl_image_tag rent.bike.photos[0].key, height: 200, crop: :fill %>
+              <%= cl_image_tag rent.bike.photos[0].key, height: 200, crop: :fill unless rent.bike.photos.empty?%>
             </figure>
             <div class="p-4">
               <strong class="d-inline-block text-secondary"><%= rent.bike.category %></strong>
@@ -67,7 +67,7 @@
         <%# component bike %>
         <div class="border rounded overflow-hidden mb-4 shadow-sm position-relative">
           <figure class="h-md-250 p-4 bg-white d-flex align-items-center justify-content-center">
-            <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill %>
+            <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill unless bike.photos.empty? %>
           </figure>
           <div class="p-4">
             <strong class="d-inline-block text-secondary"><%= bike.category %></strong>

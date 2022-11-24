@@ -19,7 +19,8 @@ class BikesController < ApplicationController
 
   def show
     authorize @bike
-    @rent = Rent.new
+    @rent = Rent.new(bike_id: @bike.id)
+    # raise
     # authorize @rent
     @markers =
       [{

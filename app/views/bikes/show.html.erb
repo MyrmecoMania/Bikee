@@ -1,11 +1,13 @@
 
 <div class="container show-page row">
+  <h2 class="text-center mt-4 mb-5">Détails du vélo</h2>
   <div class="col-4 offset-2">
-  <h1 class="text-center mt-3 mb-5">Détails du vélo</h1>
     <div class="card-details p-3 rounded mb-5">
       <div class="card-details-image">
-        <% @bike.photos.each do |photo| %>
-          <%= cl_image_tag photo.key %>
+        <% unless @bike.photos.empty? %>
+          <% @bike.photos.each do |photo| %>
+            <%= cl_image_tag photo.key %>
+          <% end %>
         <% end %>
       </div>
       <hr class="w-100 py-1">
@@ -20,10 +22,8 @@
           <p class="card-detais-price">Prix journalier : <%= @bike.price_per_day %> €</p>
           <hr class="pt-2">
           <div class="d-flex justify-content-around">
-            <% if policy(@bike).edit? %>
-              <%= link_to "Modifier", edit_bike_path(@bike), class:"btn btn-confirm rounded" %>
-            <% end %>
-            <% if @bike.user != current_user %>
+            <%= link_to "Modifier", edit_bike_path(@bike), class:"btn btn-confirm rounded" if policy(@rent).edit? %>
+            <% if policy(@rent).create? %>
               <%= simple_form_for [@bike, @rent],
                                   html: {
                                     data: {
@@ -69,28 +69,32 @@
     </div>
   </div>
   <div class="col-6">
-  <h1 class="text-center mt-3 mb-5 pb-5">Renting offers</h1>
+  <% if !policy(@rent).create? %>
     <div class="card-details p-3 rounded mb-5">
-      <% if current_user == @bike.user %>
+      <% if @bike.rents.empty? %>
+        <div class="d-flex justify-content-center align-items-center">
+          <p class="m-0">Ce vélo n'a actuellement aucune réservations</p>
+        </div>
+      <% else %>
         <% @bike.rents.each do |rent| %>
-          <%= rent.start_date %>
-          <%= rent.end_date %>
+          <p>Du <%= rent.start_date %> au <%= rent.end_date %></p>
           <p><%= rent.user.email%></p>
           <% if rent.status == "waiting" %>
-            <button class="btn btn-danger">Accept</button>
-            <button class="btn btn-danger">Decline</button>
+            <button class="btn btn-danger">Accepter</button>
+            <button class="btn btn-danger">Décliner</button>
           <% elsif rent.status == "accepted" %>
             <h4>Accepted</h4>
           <% else %>
             <h4>Declined</h4>
           <% end %>
         <% end %>
-      <% else %>
-       <div  style="width: 500px; height: 500px" data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
       <% end %>
     </div>
+  <% else %>
+    <div  style="width: 100%; height: 500px;" data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" >
+    </div>
+  <% end %>
   </div>
 </div>
