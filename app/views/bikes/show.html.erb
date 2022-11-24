@@ -86,9 +86,9 @@
             <%= link_to "Accepte", accepted_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-danger" %>
             <%= link_to "Decline", declined_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-danger" %>
           <% elsif rent.status == "Accepted" %>
-            <h4>Accepted</h4>
+            <h4>Accepté</h4>
           <% else %>
-            <h4>Declined</h4>
+            <h4>Decliné</h4>
           <% end %>
           <hr>
         <% end %>
