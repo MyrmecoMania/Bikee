@@ -1,42 +1,42 @@
 <div class="container mt-5">
   <h2 class="text-center">Louer <%= @bike.category %></h2>
   <div class="col-6 offset-3">
-    <%= simple_form_for [@bike, @rent],
-                        html: {
-                          data: {
-                            controller: 'flatpickr',
-                            flatpickr_dates_value: @bike.flatpickr_booked_dates_object
-                          }
-                        } do |f| %>
-                          <div class="row">
-                            <div class="col-6">
-                              <%= f.input :start_date,
-                                          as: :string,
-                                          html5: true,
-                                          label: "Date de début",
-                                          placeholder: "Choisissez une date...",
-                                          input_html: {
-                                            data: {
-                                              flatpickr_target: 'startDateInput',
-                                            }
-                                          } %>
+      <%= simple_form_for [@bike, @rent],
+                          html: {
+                            data: {
+                              controller: 'flatpickr',
+                              flatpickr_dates_value: @bike.flatpickr_booked_dates_object
+                            }
+                          } do |f| %>
+                            <div class="row">
+                              <div class="col-6">
+                                <%= f.input :start_date,
+                                            as: :string,
+                                            html5: true,
+                                            label: "Date de début",
+                                            placeholder: "Choisissez une date...",
+                                            input_html: {
+                                              data: {
+                                                flatpickr_target: 'startDateInput',
+                                              }
+                                            } %>
+                              </div>
+                              <div class="col-6">
+                                <%= f.input :end_date,
+                                            as: :string,
+                                            html5: true,
+                                            placeholder: "Choisissez une date...",
+                                            label: "Date de fin",
+                                            input_html: {
+                                              data: {
+                                                flatpickr_target: 'endDateInput'
+                                              }
+                                            } %>
+                              </div>
                             </div>
-                            <div class="col-6">
-                              <%= f.input :end_date,
-                                          as: :string,
-                                          html5: true,
-                                          placeholder: "Choisissez une date...",
-                                          label: "Date de fin",
-                                          input_html: {
-                                            data: {
-                                              flatpickr_target: 'endDateInput'
-                                            }
-                                          } %>
+                            <div class="d-flex justify-content-center">
+                              <%= f.submit 'Réserver', class:"btn-danger w-100" %>
                             </div>
-                          </div>
-                          <div class="d-flex justify-content-center">
-                            <%= f.submit 'Réserver', class:"btn-danger w-100" %>
-                          </div>
-                        <% end %>
+                          <% end %>
   </div>
 </div>
