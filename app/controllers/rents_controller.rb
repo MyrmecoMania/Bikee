@@ -1,21 +1,23 @@
 class RentsController < ApplicationController
-  before_action :set_bike, only: %i[new create edit update destroy]
+  # before_action :set_bike, only: %i[new create edit update destroy]
+  before_action :set_bike, only: %i[create edit update destroy]
   before_action :set_rent, only: %i[edit update]
 
-  def new
-    @rent = Rent.new(bike_id: @bike.id)
-    authorize @rent
-  end
+  # def new
+  #   @rent = Rent.new(bike_id: @bike.id)
+  #   authorize @rent
+  # end
 
   def create
     @rent = Rent.new(rent_params)
     @rent.user = current_user
     @rent.bike = @bike
     authorize @rent
+
     if @rent.save
       redirect_to dashboard_path
     else
-      render :new, status: :unprocessable_entity
+      render 'bikes/show', status: :unprocessable_entity
     end
   end
 
