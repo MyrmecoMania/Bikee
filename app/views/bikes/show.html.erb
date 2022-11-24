@@ -6,7 +6,7 @@
       <div class="card-details-image">
         <% unless @bike.photos.empty? %>
           <% @bike.photos.each do |photo| %>
-            <%= cl_image_tag photo.key %>
+            <%= cl_image_tag photo.key, draggable: false %>
           <% end %>
         <% end %>
       </div>
