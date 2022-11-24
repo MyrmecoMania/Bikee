@@ -1,5 +1,5 @@
-<div class="container show-page">
-  <div class="col-4 offset-4">
+<div class="container show-page row">
+  <div class="col-4 offset-2">
   <h1 class="text-center mt-3 mb-5">Details du vélo de <%= @bike.user.email %></h1>
     <div class="card-details p-3 rounded mb-5">
       <div class="card-details-image">
@@ -29,6 +29,31 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="col-6">
+  <h1 class="text-center mt-3 mb-5 pb-5">Renting offers</h1>
+    <div class="card-details p-3 rounded mb-5">
+      <% if current_user == @bike.user %>
+        <% @bike.rents.each do |rent| %>
+          <%= rent.start_date %>
+          <%= rent.end_date %>
+          <p><%= rent.user.email%></p>
+          <% if rent.status == "waiting" %>
+            <button class="btn btn-danger">Accept</button>
+            <button class="btn btn-danger">Decline</button>
+          <% elsif rent.status == "accepted" %>
+            <h4>Accepted</h4>
+          <% else %>
+            <h4>Declined</h4>
+          <% end %>
+        <% end %>
+      <% else %>
+       <div  style="width: 500px; height: 500px" data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
