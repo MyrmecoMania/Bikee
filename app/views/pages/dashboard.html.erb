@@ -24,7 +24,7 @@
       </div>
     </div>
   <% else %>
-    <h2 class="border-bottom my-5 pb-2">Mes vélos loués</h2>
+    <h2 class="border-bottom my-5 pb-2">Mes locations</h2>
     <div class="row mb-2">
       <% current_user.rents.each do |rent| %>
         <div class="col-12 col-md-6 col-lg-4">
@@ -37,11 +37,11 @@
               <strong class="d-inline-block text-secondary"><%= rent.bike.category %></strong>
               <h3 class="mb-0 py-3"><%= rent.bike.brand %></h3>
               <% if rent.status == "waiting" %>
-                <h4 class="card-text my-4">Status: <%= rent.status %> response</h4>
+                <h4 class="card-text my-4">En attente</h4>
               <% elsif rent.status == "declined" %>
-                <h4 class="card-text my-4">Status: <%= rent.status %></h4>
+                <h4 class="card-text my-4">Refusée</h4>
               <% elsif rent.status == "accepted" %>
-                <h4 class="card-text my-4">Status: <%= rent.status %></h4>
+                <h4 class="card-text my-4">Acceptée</h4>
               <% end %>
               <div class="d-flex align-items-center justify-content-between">
                 <%= link_to bike_path(rent.bike), class: "btn btn-primary button" do %>
@@ -60,7 +60,7 @@
   <% end %>
 
 
-  <h2 class="border-bottom my-5 pb-2">Mes vélos à louer</h2>
+  <h2 class="border-bottom my-5 pb-2">Mes offres</h2>
   <div class="row mb-2">
     <% current_user.bikes.each do |bike| %>
       <div class="col-12 col-md-6 col-lg-4">
