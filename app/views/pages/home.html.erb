@@ -44,7 +44,7 @@
       <% Bike.all.shuffle[1..3].each do |bike| %>
         <div class="card-trip" onClick="window.open('<%= bike_path(bike) %>')">
           <figure class="h-md-250 p-4 bg-white d-flex align-items-center justify-content-center">
-            <%= cl_image_tag bike.photos[0].key, height: 250, crop: :fill %>
+            <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill %>
           </figure>
           <div class="card-trip-infos">
             <div>
