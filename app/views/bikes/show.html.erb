@@ -20,12 +20,12 @@
           <hr class="pt-2">
           <div class="d-flex justify-content-around">
             <% if policy(@bike).edit? %>
-              <%= link_to "Modifier", edit_bike_path(@bike), class:"btn btn-danger rounded" %>
+              <%= link_to "Modifier", edit_bike_path(@bike), class:"btn btn-confirm rounded" %>
             <% end %>
             <% if @bike.user != current_user %>
-              <%= link_to "Réserver", new_bike_rent_path(@bike), class:"btn btn-danger rounded large p-2" %>
+              <%= link_to "Réserver", new_bike_rent_path(@bike), class:"btn btn-confirm rounded large p-2" %>
             <% end %>
-            <%= button_to "Supprimer", @bike, method: :delete, class:"btn btn-danger rounded" if policy(@bike).destroy? %>
+            <%= button_to "Supprimer", @bike, method: :delete, class:"btn btn-confirm rounded" if policy(@bike).destroy? %>
           </div>
         </div>
       </div>
