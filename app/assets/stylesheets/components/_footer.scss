@@ -3,15 +3,6 @@
   border-top: 0.0625rem solid;
 }
 
-.footer__container--padded{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  padding: 2.5rem 20.75rem;
-}
-
 .footerSection__title{
   font-weight: bold;
   font-family: var(--fontLabor);
