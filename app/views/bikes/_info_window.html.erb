@@ -1,4 +1,5 @@
 
-<h2><%= bike.category %></h2>
+<h2><%= link_to bike.category, bike_path(bike) %></h2>
+<p><%= bike.user.email %></p>
 <p><%= bike.address %></p>
 <p><%= bike.price_per_day %>€ par jour</p>

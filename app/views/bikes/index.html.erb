@@ -13,6 +13,7 @@
               <div class="p-4">
                 <strong class="d-inline-block text-secondary"><%= bike.category %></strong>
                 <p><%= bike.address %></p>
+                <p><%= bike.user.email %></p>
                 <div class="d-flex align-items-center justify-content-between">
                   <%= link_to bike_path(bike), class: "btn btn-primary" do %>
                     Voir le détail <i class="fa-solid fa-arrow-right"></i>
