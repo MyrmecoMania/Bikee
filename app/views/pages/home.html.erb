@@ -43,7 +43,9 @@
     <div class="cards last-suggest">
       <% Bike.all.shuffle[1..3].each do |bike| %>
         <div class="card-trip" onClick="window.open('<%= bike_path(bike) %>')">
-          <img class="p-4" src="https://contents.mediadecathlon.com/p1732638/k$257bcaad093414d7ba6573e216ad94aa/sq/vtt-enfant-rockrider-st-900-24-pouces-9-12-ans-rouge.jpg?format=auto&f=969x969" />
+          <figure class="h-md-250 p-4 bg-white d-flex align-items-center justify-content-center">
+            <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill %>
+          </figure>
           <div class="card-trip-infos">
             <div>
               <h2 class="text-start"><%= link_to bike.category, bike_path(bike) %></h2>

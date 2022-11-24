@@ -14,7 +14,7 @@
     <div class="banner-product row">
       <div class="col-12 col-md-4 banner-product-infos p-4">
         <h2 class="fs-4 text-start">Pas de vélo reservé en ce moment</h2>
-        <p class="my-3">Il est temps de ressortir préparer votre prochaine escapade.</p>
+        <p class="my-3 fs-6">Il est temps de ressortir préparer votre prochaine escapade.</p>
         <%= link_to bikes_path, class: "btn btn-primary dashboard-btn" do %>
           Lancer une recherche
         <% end %>
@@ -24,7 +24,7 @@
       </div>
     </div>
   <% else %>
-    <h2 class="border-bottom pt-4 pb-3">Mes vélos loués</h2>
+    <h2 class="border-bottom my-5 pb-2">Mes vélos loués</h2>
     <div class="row mb-2">
       <% current_user.rents.each do |rent| %>
         <div class="col-12 col-md-6 col-lg-4">
@@ -44,7 +44,7 @@
                 <h4 class="card-text my-4">Status: <%= rent.status %></h4>
               <% end %>
               <div class="d-flex align-items-center justify-content-between">
-                <%= link_to bike_path(rent.bike), class: "btn btn-primary" do %>
+                <%= link_to bike_path(rent.bike), class: "btn btn-primary button" do %>
                   Voir le détail <i class="fa-solid fa-arrow-right"></i>
                 <% end %>
                 <div class="d-flex align-items-center text-primary">
@@ -60,7 +60,7 @@
   <% end %>
 
 
-  <h2 class="border-bottom pt-4 pb-3">Mes vélos à louer</h2>
+  <h2 class="border-bottom my-5 pb-2">Mes vélos à louer</h2>
   <div class="row mb-2">
     <% current_user.bikes.each do |bike| %>
       <div class="col-12 col-md-6 col-lg-4">
@@ -73,7 +73,7 @@
             <strong class="d-inline-block text-secondary"><%= bike.category %></strong>
             <h3 class="mb-0 py-3"><%= bike.brand %></h3>
             <div class="d-flex align-items-center justify-content-between">
-              <%= link_to bike_path(bike), class: "btn btn-primary" do %>
+              <%= link_to bike_path(bike), class: "btn btn-primary button" do %>
                 Voir le détail <i class="fa-solid fa-arrow-right"></i>
               <% end %>
               <div class="d-flex align-items-center text-primary">
@@ -88,34 +88,35 @@
   </div>
 <%# Informations personnelles %>
 
-<div class="container px-4 py-5" id="icon-grid">
-  <h2 class="border-bottom pt-4 pb-3">Mes informations personnelles</h2>
+  <div class="py-2" id="icon-grid">
+    <h2 class="border-bottom pb-2">Mes informations personnelles</h2>
 
-  <div class="row py-5 justify-content-center">
-    <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 d-flex align-items-start justify-content-center">
-      <a href="#" class="text-center">
-        <i class="fa-solid fa-address-card fs-1 pe-2 mb-4"></i>
-        <div>
-          <h3 class="fw-bold mb-2 fs-4">Informations personnelles</h3>
-          <p>Fournissez des renseignements personnels et indiquez comment nous pouvons vous joindre</p>
-        </div>
-      </a>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 d-flex align-items-start justify-content-center">
-      <a href="#" class="text-center">
-        <i class="fa-solid fa-shield-halved fs-1 pe-2 mb-4"></i>
-        <div>
-          <h3 class="fw-bold mb-2 fs-4">Connexion et securité</h3>
-          <p>Mettez à jour votre mot de passe.</p>
-        </div>
-      </a>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 d-flex align-items-start">
-      <a href="#" class="text-center">
-        <i class="fa-solid fa-credit-card fs-1 pe-2 mb-4"></i>
-        <div>
-          <h3 class="fw-bold mb-2 fs-4">Paiements et versements</h3>
-          <p>Consultez les paiements, les versements, les coupons, les cartes cadeaux et les taxes</p>
+    <div class="row py-5 justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 d-flex align-items-start justify-content-center">
+        <%= link_to edit_user_registration_path, class: "text-center" do %>
+          <i class="fa-solid fa-address-card fs-1 pe-2 mb-4"></i>
+          <div>
+            <h3 class="fw-bold mb-2 fs-4">Informations personnelles</h3>
+            <p>Fournissez des renseignements personnels et indiquez comment nous pouvons vous joindre</p>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 d-flex align-items-start justify-content-center">
+        <%= link_to edit_user_registration_path, class: "text-center" do %>
+          <i class="fa-solid fa-shield-halved fs-1 pe-2 mb-4"></i>
+          <div>
+            <h3 class="fw-bold mb-2 fs-4">Connexion et securité</h3>
+            <p>Mettez à jour votre mot de passe.</p>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0 d-flex align-items-start">
+        <div href="#" class="text-center">
+          <i class="fa-solid fa-credit-card fs-1 pe-2 mb-4"></i>
+          <div>
+            <h3 class="fw-bold mb-2 fs-4">Paiements et versements</h3>
+            <p>Consultez les paiements, les versements, les coupons, les cartes cadeaux et les taxes</p>
+          </div>
         </div>
       </div>
     </div>
