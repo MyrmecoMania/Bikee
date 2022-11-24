@@ -1,7 +1,7 @@
 <div class="container">
 <h1 class="text-center mt-4">Bikes</h1>
   <div class="row mt-5">
-    <% Bike.all.each do |bike| %>
+    <% @bikes.each do |bike| %>
       <div class="col-3">
         <%= link_to bike.category, bike_path(bike) %>
         <p>Price per day: <%= bike.price_per_day %></p>
