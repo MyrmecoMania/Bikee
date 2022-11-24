@@ -34,7 +34,7 @@
               <%= cl_image_tag rent.bike.photos[0].key, height: 250, crop: :fill %>
             </figure>
             <div class="p-4">
-              <strong class="d-inline-block text-secondary"><%= bike.category %></strong>
+              <strong class="d-inline-block text-secondary"><%= rent.bike.category %></strong>
               <h3 class="mb-0"><%# <%= bike.title %>title</h3>
               <p class="card-text my-4">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
               <div class="d-flex align-items-center justify-content-between">
@@ -42,7 +42,7 @@
                   Voir le détail <i class="fa-solid fa-arrow-right"></i>
                 <% end %>
                 <div class="d-flex align-items-center text-primary">
-                  <strong class="d-inline-block fs-4"><%= bike.price_per_day %>€ </strong>
+                  <strong class="d-inline-block fs-4"><%= rent.bike.price_per_day %>€ </strong>
                   <em class="d-inline-block ms-2">/ jour</em>
                 </div>
               </div>
@@ -52,7 +52,6 @@
       <% end %>
     </div>
   <% end %>
-
 
 
   <h2 class="border-bottom pt-4 pb-3">Mes vélos à louer</h2>
