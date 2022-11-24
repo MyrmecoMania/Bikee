@@ -40,16 +40,16 @@
 <div class="background-home p-4">
   <div class="container mt-4">
     <h2 class="my-5">Dernières suggestions </h2>
-    <div class="cards last-suggest">
+    <div class="cards last-suggest d-flex justify-content-between">
       <% Bike.all.shuffle[1..3].each do |bike| %>
-        <div class="card-trip" onClick="window.open('<%= bike_path(bike) %>')">
-          <figure class="h-md-250 p-4 bg-white d-flex align-items-center justify-content-center">
+        <div class="card-trip flex-1" onClick="window.open('<%= bike_path(bike) %>')">
+          <figure class="h-md-250 p-4 bg-white">
             <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill, draggable: false %>
           </figure>
           <div class="card-trip-infos">
             <div>
               <h2 class="text-start"><%= link_to bike.category, bike_path(bike) %></h2>
-              <% if bike.status == true %>
+              <% if bike.status %>
                 <p>Disponible</p>
               <% else %>
                 <p>Non disponible</p>
