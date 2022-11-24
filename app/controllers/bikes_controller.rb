@@ -19,8 +19,13 @@ class BikesController < ApplicationController
 
   def show
     authorize @bike
+    @markers =
+    [{
+      lat: @bike.latitude,
+      lng: @bike.longitude,
+      info_window: render_to_string(partial: "info_window", locals: { bike: @bike })
+    }]
   end
-
   def new
     @bike = Bike.new
     authorize @bike
