@@ -10,18 +10,48 @@
     <% end %>
   </p>
 
-  <div class="banner-product row">
-    <div class="col-12 col-md-4 banner-product-infos p-4">
-      <h2 class="fs-4 text-start">Pas de vélo reservé en ce moment</h2>
-      <p class="my-3">Il est temps de ressortir préparer votre prochaine escapade.</p>
-      <%= link_to bikes_path, class: "btn btn-primary dashboard-btn" do %>
-        Lancer une recherche
+  <% if current_user.rents.empty? %>
+    <div class="banner-product row">
+      <div class="col-12 col-md-4 banner-product-infos p-4">
+        <h2 class="fs-4 text-start">Pas de vélo reservé en ce moment</h2>
+        <p class="my-3">Il est temps de ressortir préparer votre prochaine escapade.</p>
+        <%= link_to bikes_path, class: "btn btn-primary dashboard-btn" do %>
+          Lancer une recherche
+        <% end %>
+      </div>
+      <div class="col-12 col-md-8 g-0 h-100 overflow-hidden d-flex align-items-center justify-content-center">
+        <img src="https://c4.wallpaperflare.com/wallpaper/309/484/960/nature-bicycle-wallpaper-preview.jpg" />
+      </div>
+    </div>
+  <% else %>
+    <h2 class="border-bottom pt-4 pb-3">Mes vélos loués</h2>
+    <div class="row mb-2">
+      <% current_user.rents.each do |rent| %>
+        <div class="col-12 col-md-6 col-lg-4">
+          <%# component bike %>
+          <div class="border rounded overflow-hidden mb-4 shadow-sm position-relative">
+            <figure class="h-md-250 p-4 bg-white d-flex align-items-center justify-content-center">
+              <%= cl_image_tag rent.bike.photos[0].key, height: 250, crop: :fill %>
+            </figure>
+            <div class="p-4">
+              <strong class="d-inline-block text-secondary"><%= bike.category %></strong>
+              <h3 class="mb-0"><%# <%= bike.title %>title</h3>
+              <p class="card-text my-4">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+              <div class="d-flex align-items-center justify-content-between">
+                <%= link_to bike_path(rent.bike), class: "btn btn-primary" do %>
+                  Voir le détail <i class="fa-solid fa-arrow-right"></i>
+                <% end %>
+                <div class="d-flex align-items-center text-primary">
+                  <strong class="d-inline-block fs-4"><%= bike.price_per_day %>€ </strong>
+                  <em class="d-inline-block ms-2">/ jour</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
-    <div class="col-12 col-md-8 g-0 h-100 overflow-hidden d-flex align-items-center justify-content-center">
-      <img src="https://c4.wallpaperflare.com/wallpaper/309/484/960/nature-bicycle-wallpaper-preview.jpg" />
-    </div>
-  </div>
+  <% end %>
 
 
 
