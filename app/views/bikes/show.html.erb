@@ -23,7 +23,7 @@
               <%= link_to "Modifier", edit_bike_path(@bike), class:"btn btn-danger rounded" %>
             <% end %>
             <% if @bike.user != current_user %>
-              <%= link_to "Réserver", new_bike_rent_path(@bike), class:"btn btn-danger rounded" %>
+              <%= link_to "Réserver", new_bike_rent_path(@bike), class:"btn btn-danger rounded large p-2" %>
             <% end %>
             <%= button_to "Supprimer", @bike, method: :delete, class:"btn btn-danger rounded" if policy(@bike).destroy? %>
           </div>

@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <h2 class="text-center">Add a new bike</h2>
+  <h2 class="text-center">Ajouter un vélo</h2>
   <div class="col-6 offset-3">
     <%= simple_form_for(@bike) do |f| %>
       <%= f.input :category %>
@@ -11,7 +11,7 @@
       %>
       <%= f.input :price_per_day %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.submit class: "btn btn-danger" %>
+      <%= f.submit class: "btn btn-danger large" %>
     <% end %>
   </div>
 </div>
