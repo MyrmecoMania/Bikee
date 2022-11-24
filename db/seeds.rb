@@ -8,6 +8,8 @@
 require "open-uri"
 require 'json'
 
+require 'faker'
+
 Rent.destroy_all
 Bike.destroy_all
 User.destroy_all
@@ -42,8 +44,7 @@ user_prefix = ["az", "er", "ty", "qw"]
 
 user_prefix.each do |el|
   p "Creating user and his bikes..."
-
-  new_user = User.new(email: "#{el}@gmail.com", password: "123456789")
+  new_user = User.new(email: "#{el}@gmail.com", password: "123456789", phone_number: "0698876554")
 
   rand(1..5).times do
     bike_infos = bikes.sample
