@@ -24,6 +24,7 @@
                     label: 'Nom',
                     autofocus: true,
                     hint: "Laissez le champs vide si vous ne souhaitez pas changer votre nom" %>
+        <%= f.input :photo, label:"Photo de profil", as: :file, input_html: { multiple: false } %>
 
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
