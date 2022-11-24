@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://vttelectriques.fr/wp-content/uploads/2021/03/femme-ave-un-VTT-electrique.jpg);">
   <div class="container">
     <h1>Louez un vélo à un particulier</h1>
-    <%= link_to "Louez un vélo", bikes_path, class: "btn btn-danger btn-home shadow-lg" %>
+    <%= link_to "Louez un vélo", bikes_path, class: "btn btn-home shadow-lg" %>
   </div>
 </div>
 
@@ -10,7 +10,7 @@
   <%= simple_form_for :query, url: bikes_path, method: :get do |f| %>
     <div class="search-form-control form-group">
       <input class="form-control string required mb-2" placeholder="Dans quelle ville voulez-vous louer un vélo ?" type="text" name="query" id="search_query" />
-      <button name="button" type="submit" class="btn btn-danger btn-flat">
+      <button name="button" type="submit" class="btn btn-search btn-flat">
         <i class="fas fa-search"></i> Search
       </button>
     </div>
