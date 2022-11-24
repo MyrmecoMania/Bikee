@@ -16,7 +16,7 @@
           <% end %>
           <p>Statuts : <%= @bike.status ? 'Disponible' : 'Indisponible' %></p>
           <p>Adresse : <%= @bike.address %></p>
-          <p class="card-detais-price">Prix par jour : <%= @bike.price_per_day %> €</p>
+          <p class="card-detais-price">Prix journalier : <%= @bike.price_per_day %> €</p>
           <hr class="pt-2">
           <div class="d-flex justify-content-around">
             <% if policy(@bike).edit? %>
