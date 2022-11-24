@@ -13,7 +13,7 @@ Bike.destroy_all
 User.destroy_all
 
 BIKE_CATEGORY = ["VTT", "route", "enfant", "bmx", "ville"]
-ADDRESS = ["16 villa gaudelet, Paris", "63 avenue parmentier, Paris", "Pigalle, Paris", "Eiffel Tower, Paris", "Montparnasse Cementery, Paris", "23 Rue Blomet, Paris"]
+ADDRESS = ["16 villa gaudelet, Paris", "63 avenue parmentier, Paris", "Pigalle, Paris", "Eiffel Tower, Paris", "Montparnasse Cemetery, Paris", "23 Rue Blomet, Paris"]
 
 data = URI.open(
   "https://api.99spokes.com/v1/bikes?include=images&limit=50",

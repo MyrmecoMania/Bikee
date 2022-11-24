@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_many :bikes
   has_many :rents
   has_one_attached :photo
+
+  validates :phone_number,
+            format: { with: /\A(?:\+?\d{1,3}\s*-?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{4}\z/ },
+            presence: true
 end
