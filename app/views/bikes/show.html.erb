@@ -80,13 +80,14 @@
           <p>Du <%= rent.start_date %> au <%= rent.end_date %></p>
           <p><%= rent.user.email%></p>
           <% if rent.status == "waiting" %>
-            <button class="btn btn-danger">Accepter</button>
-            <button class="btn btn-danger">Décliner</button>
-          <% elsif rent.status == "accepted" %>
+            <%= link_to "Accepte", accepted_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-danger" %>
+            <%= link_to "Decline", declined_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-danger" %>
+          <% elsif rent.status == "Accepted" %>
             <h4>Accepted</h4>
           <% else %>
             <h4>Declined</h4>
           <% end %>
+          <hr>
         <% end %>
       <% end %>
     </div>

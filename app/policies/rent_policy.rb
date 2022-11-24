@@ -25,4 +25,12 @@ class RentPolicy < ApplicationPolicy
   def destroy?
     record.user == user || record.bike.user == user
   end
+
+  def accepted?
+    record.user == user || record.bike.user == user
+  end
+
+  def declined?
+    record.user == user || record.bike.user == user
+  end
 end
