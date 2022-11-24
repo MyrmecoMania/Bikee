@@ -8,12 +8,14 @@
 require "open-uri"
 require 'json'
 
+require 'faker'
+
 Rent.destroy_all
 Bike.destroy_all
 User.destroy_all
 
 BIKE_CATEGORY = ["VTT", "route", "enfant", "bmx", "ville"]
-ADDRESS = ["16 villa gaudelet, Paris", "63 avenue parmentier, Paris", "Pigalle, Paris", "Eiffel Tower, Paris", "Montparnasse Cementery, Paris", "23 Rue Blomet, Paris"]
+ADDRESS = ["16 villa gaudelet, Paris", "63 avenue parmentier, Paris", "Pigalle, Paris", "Eiffel Tower, Paris", "Montparnasse Cemetery, Paris", "23 Rue Blomet, Paris"]
 
 data = URI.open(
   "https://api.99spokes.com/v1/bikes?include=images&limit=50",
@@ -42,8 +44,7 @@ user_prefix = ["az", "er", "ty", "qw"]
 
 user_prefix.each do |el|
   p "Creating user and his bikes..."
-
-  new_user = User.new(email: "#{el}@gmail.com", password: "123456789")
+  new_user = User.new(email: "#{el}@gmail.com", password: "123456789", phone_number: "0698876554")
 
   rand(1..5).times do
     bike_infos = bikes.sample

@@ -17,13 +17,16 @@
         <%= f.input :firstname,
                     required: false,
                     label: 'Prénom',
-                    autofocus: true,
-                    hint: "Laissez le champs vide si vous ne souhaitez pas changer votre prénom" %>
+                    autofocus: true %>
         <%= f.input :lastname,
                     required: false,
                     label: 'Nom',
-                    autofocus: true,
-                    hint: "Laissez le champs vide si vous ne souhaitez pas changer votre nom" %>
+                    autofocus: true %>
+        <%= f.input :phone_number,
+                    as: :string,
+                    required: true,
+                    label: 'Numéro de télephone',
+                    autofocus: true %>
         <%= f.input :photo, label:"Photo de profil", as: :file, input_html: { multiple: false } %>
 
 

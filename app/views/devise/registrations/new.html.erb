@@ -6,14 +6,31 @@
 
       <div class="form-inputs">
         <%= f.input :email,
+                    label: "Email",
                     required: true,
                     autofocus: true,
                     input_html: { autocomplete: "email" }%>
-        <%= f.input :password,
+        <%= f.input :firstname,
+                    label: "Prénom",
+                    autofocus: true,
+                    input_html: { autocomplete: "prénom" }%>
+        <%= f.input :lastname,
+                    label: "Nom",
+                    autofocus: true,
+                    input_html: { autocomplete: "nom" }%>
+        <%= f.input :phone_number,
+                    label: "Numéro de télephone",
+                    as: :string,
                     required: true,
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    autofocus: true,
+                    input_html: { autocomplete: "numéro de télephone" }%>
+        <%= f.input :password,
+                    label: "Mot de passe",
+                    required: true,
+                    hint: ("#{@minimum_password_length} charactères minimums" if @minimum_password_length),
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
+                    label: "Confirmer le mot de passe",
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
       </div>
