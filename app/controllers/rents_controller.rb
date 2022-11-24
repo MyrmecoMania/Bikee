@@ -1,7 +1,7 @@
 class RentsController < ApplicationController
   # before_action :set_bike, only: %i[new create edit update destroy]
   before_action :set_bike, only: %i[create edit update destroy]
-  before_action :set_rent, only: %i[edit update]
+  before_action :set_rent, only: %i[edit update accepted declined]
 
   # def new
   #   @rent = Rent.new(bike_id: @bike.id)
@@ -37,6 +37,16 @@ class RentsController < ApplicationController
   def destroy
     authorize @rent
     @rent.destroy
+  end
+
+  def accepted
+    authorize @rent
+    redirect_to bike_path(@rent.bike) if @rent.update(status: "Accepted")
+  end
+
+  def declined
+    authorize @rent
+    redirect_to bike_path(@rent.bike) if @rent.update(status: "Declined")
   end
 
   private

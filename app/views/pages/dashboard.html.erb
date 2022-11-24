@@ -38,9 +38,9 @@
               <h3 class="mb-0 py-3"><%= rent.bike.brand %></h3>
               <% if rent.status == "waiting" %>
                 <h4 class="card-text my-4">En attente</h4>
-              <% elsif rent.status == "declined" %>
+              <% elsif rent.status == "Declined" %>
                 <h4 class="card-text my-4">Refusée</h4>
-              <% elsif rent.status == "accepted" %>
+              <% elsif rent.status == "Accepted" %>
                 <h4 class="card-text my-4">Acceptée</h4>
               <% end %>
               <div class="d-flex align-items-center justify-content-between">
