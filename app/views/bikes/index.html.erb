@@ -1,16 +1,38 @@
 <div class="container">
 <h1 class="text-center mt-4">Vélos</h1>
-  <div class="row mt-5">
-    <% @bikes.each do |bike| %>
-      <div class="col-3">
-        <%= link_to bike.category, bike_path(bike) %>
-        <p>Prix journalier: <%= bike.price_per_day %></p>
-        <p>Adresse: <%= bike.address %></p>
+<hr>
+  <div class="row mt-4">
+    <div class="col-8 row">
+      <% @bikes.each do |bike| %>
+        <div class="col-12 col-md-6 col-lg-6">
+            <%# component bike %>
+            <div class="border rounded overflow-hidden mb-4 shadow-sm position-relative">
+              <figure class="h-md-250 p-4 bg-white d-flex align-items-center justify-content-center">
+                <%= cl_image_tag bike.photos[0].key, height: 250, crop: :fill %>
+              </figure>
+              <div class="p-4">
+                <strong class="d-inline-block text-secondary"><%= bike.category %></strong>
+                <p><%= bike.address %></p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <%= link_to bike_path(bike), class: "btn btn-primary" do %>
+                    Voir le détail <i class="fa-solid fa-arrow-right"></i>
+                  <% end %>
+                  <div class="d-flex align-items-center text-primary">
+                    <strong class="d-inline-block fs-4"><%= bike.price_per_day %>€ </strong>
+                    <em class="d-inline-block ms-2">/ jour</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <% end %>
       </div>
-    <% end %>
-    <div style="width: 100%; height: 600px;"
-         data-controller="map"
-         data-map-markers-value="<%= @markers.to_json %>"
-         data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      <div class="col-4">
+        <div  style="width: 440px; top: 56px; height: 92vh" data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" class="sticky-top">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
