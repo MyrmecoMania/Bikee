@@ -11,7 +11,8 @@
       %>
       <%= f.input :price_per_day, label:"Prix journalier" %>
       <%= f.input :status, label: "Available" %>
-      <%= f.submit "Modifier mon vélo", class: "btn btn-confirm large button mb-5" %>
+      <%= f.input :photos, label:"Photo(s)", as: :file, input_html: { multiple: true } %>
+      <%= f.submit "Modifier mon vélo", class: "btn btn-primary large button" %>
     <% end %>
   </div>
 </div>
