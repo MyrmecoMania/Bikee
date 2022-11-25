@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     redirect_to bikes_path
   end
 
+  def full_name
+    "#{firstname} + #{lastname}"
+  end
+
   private
 
   def skip_pundit?
