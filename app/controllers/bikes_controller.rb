@@ -1,5 +1,6 @@
 class BikesController < ApplicationController
   before_action :set_bike, only: %i[show edit destroy update]
+  before_action :set_new_bike
   # skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
@@ -14,6 +15,7 @@ class BikesController < ApplicationController
     else
       @bikes = policy_scope(Bike)
     end
+
     @markers = @bikes.geocoded.map do |bike|
       {
         lat: bike.latitude,
@@ -24,6 +26,7 @@ class BikesController < ApplicationController
   end
 
   def show
+    @new_bike = Bike.new
     authorize @bike
     @rent = Rent.new(bike_id: @bike.id)
     # raise
@@ -36,12 +39,13 @@ class BikesController < ApplicationController
       }]
   end
 
-  def new
-    @bike = Bike.new
-    authorize @bike
-  end
+  # def new
+  #   @bike = Bike.new
+  #   authorize @bike
+  # end
 
   def create
+    @new_bike = Bike.new
     @bike = Bike.new(bike_params)
     @bike.user = current_user
     authorize @bike
@@ -80,5 +84,9 @@ class BikesController < ApplicationController
 
   def set_bike
     @bike = Bike.find(params[:id])
+  end
+
+  def set_new_bike
+    @new_bike = Bike.new
   end
 end
