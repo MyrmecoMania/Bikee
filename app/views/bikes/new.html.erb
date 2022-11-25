@@ -2,7 +2,7 @@
   <h2 class="text-center align-items-center">Ajouter un vélo</h2><br>
   <div class="row">
     <div class="col-3 offset-1 p-2 bike-form">
-      <%= simple_form_for(@bike) do |f| %>
+      <%= simple_form_for(@new_bike) do |f| %>
         <%= f.input :category, collection: ['gravel', 'éléctrique','route', 'VTT', 'enfant', 'bmx', 'ville', 'autres'], label: "Catégorie", placeholder:"gravel" %>
         <%= f.input :brand, label:"Marque", placeholder: "Orbea"%>
         <%= f.input :address, label: "Adresse",

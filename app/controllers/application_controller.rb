@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_new_bike
 
   # Uncomment when you *really understand* Pundit!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -13,10 +14,6 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to bikes_path
   end
-
-  # def full_name
-  #   "#{firstname} + #{lastname}"
-  # end
 
   private
 
@@ -30,5 +27,9 @@ class ApplicationController < ActionController::Base
 
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: %i[photo firstname lastname phone_number])
+  end
+
+  def set_new_bike
+    @new_bike = Bike.new
   end
 end

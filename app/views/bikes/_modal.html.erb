@@ -1,0 +1,28 @@
+<div class="modal fade" id="new_movie_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add a bike</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <%= simple_form_for(@new_bike) do |f| %>
+        <div class="modal-body">
+          <%= f.input :category, collection: ['gravel', 'éléctrique','route', 'VTT', 'enfant', 'bmx', 'ville', 'autres'], label: "Catégorie", placeholder:"gravel" %>
+          <%= f.input :brand, label:"Marque", placeholder: "Orbea"%>
+          <%= f.input :address, label: "Adresse",
+                      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                      wrapper_html: {data: {controller: "address-autocomplete",
+                      address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+          %>
+          <%= f.input :price_per_day, label:"Prix journalier", placeholder:"€" %>
+          <%= f.input :photos, label:"Photo(s)", as: :file, input_html: { multiple: true } %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit "Ajouter un vélo", class: "btn btn-confirm large button"%>
+          <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Back</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
