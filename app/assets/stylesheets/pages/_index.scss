@@ -1,6 +1,18 @@
 // Import page-specific CSS files here.
 @import "home";
 
+.card-product-propietary {
+  // border:none;
+  background-color: #f4f4f4;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    box-shadow: none;
+    // border: 1px solid #fff;
+  }
+}
+
 .button {
   display: inline-block;
   color: #fff;
