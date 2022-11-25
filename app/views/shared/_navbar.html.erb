@@ -28,7 +28,6 @@
               <%= cl_image_tag current_user.photo.key, crop: :fit, class: "avatar dropdown-toggle", id: "navbarDropdown", aria: {haspopup: "true", expanded: "false"}, data: {bs_toggle: "dropdown"}  %>
             <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Mettre mon vélo en location", new_bike_path, class: "dropdown-item p-2" %>
                 <%= link_to "Mon compte", dashboard_path, class: "dropdown-item border-bottom p-2" %>
                 <%= link_to "Deconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item p-2" %>
               </div>
