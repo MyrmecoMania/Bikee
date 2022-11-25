@@ -10,15 +10,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <li class="nav-item active">
-          <button type="button" class="btn btn-flat" data-bs-toggle="modal" data-bs-target="#new_movie_modal" style="color: black;">
-            Mettre mon vélo en location
-          </button>
-
-            <%# if  user_signed_in?%>
-              <%#= link_to "Mettre mon vélo en location", new_bike_path, class: "nav-link" %>
-            <%# else %>
-              <%#= link_to "Mettre mon vélo en location", new_user_session_path, class: "nav-link" %>
-            <%# end %>
+          <% if  user_signed_in?%>
+            <button type="button" class="btn btn-flat" data-bs-toggle="modal" data-bs-target="#new_movie_modal" style="color: black;">
+              Mettre mon vélo en location
+            </button>
+          <% else %>
+            <%= link_to "Mettre mon vélo en location", new_user_session_path, class: "nav-link" %>
+          <% end %>
           </li>
           <% if user_signed_in? == false %>
             <li class="nav-item">
