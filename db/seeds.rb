@@ -44,7 +44,15 @@ user_prefix = ["az", "er", "ty", "qw"]
 
 user_prefix.each do |el|
   p "Creating user and his bikes..."
-  new_user = User.new(email: "#{el}@gmail.com", password: "123456789", phone_number: "0698876554")
+  new_user = User.new(
+    email: "#{el}@gmail.com",
+    password: "123456789",
+    phone_number: "0698876554",
+    firstname: Faker::Name.first_name,
+    lastname: Faker::Name.last_name
+  )
+
+  Faker::Name.unique.clear
 
   rand(1..5).times do
     bike_infos = bikes.sample
@@ -56,7 +64,7 @@ user_prefix.each do |el|
       price_per_day: rand(20..50).to_s,
       user: new_user
     )
-    p bike_infos[0]
+
     bike.photos.attach(io: File.open(bike_infos[0]), filename: bike_infos[0], content_type: "image/jpeg")
     bike.save
   end
