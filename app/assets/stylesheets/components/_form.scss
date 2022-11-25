@@ -4,3 +4,15 @@
   font-style: bold;
   border: 1px solid lightgrey;
 }
+
+.form-check-input.is-valid.boolean.optional{
+  border-color: black;
+}
+
+.form-check-label.boolean.optional{
+  border-color: black;
+  color: black;
+}
+.form-check-input.is-valid:checked{
+  background-color: black
+}
