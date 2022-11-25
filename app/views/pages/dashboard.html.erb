@@ -1,7 +1,8 @@
 <div class="container">
-  <h1 class="text-start pt-3">Mon compte</h1>
+  <h1 class="text-start pt-3">Compte</h1>
   <p class="fs-6 pb-3">
     <span class="me-1">
+      <strong><%= current_user.firstname %> <%= current_user.lastname %></strong>,
       <%= current_user.email %>
        |
     </span>
@@ -24,7 +25,7 @@
       </div>
     </div>
   <% else %>
-    <h2 class="border-bottom my-5 pb-2">Mes locations</h2>
+    <h2 class="border-bottom my-5 pb-2">Mes locations de vélos</h2>
     <div class="row mb-2 horizontal-scroll">
       <% current_user.rents.each do |rent| %>
         <div class="col-12 col-md-6 col-lg-4 mb-4">
@@ -91,7 +92,7 @@
     </div>
   <% end %>
 
-  <h2 class="border-bottom my-5 pb-2">Mes offres</h2>
+  <h2 class="border-bottom my-5 pb-2">Mes vélos à louer</h2>
   <div class="row mb-2 horizontal-scroll">
     <% current_user.bikes.each do |bike| %>
       <div class="col-12 col-md-6 col-lg-4 mb-4">
