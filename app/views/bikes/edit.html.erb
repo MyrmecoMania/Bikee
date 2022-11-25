@@ -13,7 +13,6 @@
         %>
         <%= f.input :status, label: "Disponible" %>
         <%= f.input :price_per_day, label:"Prix journalier", placeholder:"€" %>
-        <%= f.input :photos, label:"Photo(s)", as: :file, input_html: { multiple: true } %>
         <%= f.submit "Valider la modification", class: "btn btn-confirm large"%>
       <% end %>
     </div>
