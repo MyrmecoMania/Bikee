@@ -1,13 +1,24 @@
 <div class="container">
   <h1 class="text-start pt-3">Compte</h1>
   <p class="fs-6 pb-3">
-    <span class="me-1">
-      <strong><%= current_user.firstname %> <%= current_user.lastname %></strong>,
-      <%= current_user.email %>
-       |
-    </span>
-    <%= link_to edit_user_registration_path, class: "text-decoration-underline" do %>
-       Paramètres du compte <i class="fa-solid fa-arrow-right"></i>
+
+    <% if current_user.firstname  == "" || current_user.lastname == "" %>
+      <span class="me-1">
+        <%= current_user.email %>
+        |
+      </span>
+      <%= link_to edit_user_registration_path, class: "text-decoration-underline" do %>
+        Paramètres du compte <i class="fa-solid fa-arrow-right"></i>
+      <% end %>
+    <% else %>
+      <span class="me-1">
+        <strong><%= current_user.firstname %> <%= current_user.lastname %></strong>,
+        <%= current_user.email %>
+        |
+      </span>
+      <%= link_to edit_user_registration_path, class: "text-decoration-underline" do %>
+        Paramètres du compte <i class="fa-solid fa-arrow-right"></i>
+      <% end %>
     <% end %>
   </p>
 
