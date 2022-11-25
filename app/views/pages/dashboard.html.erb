@@ -103,6 +103,7 @@
               <strong class="d-inline-block text-secondary"><%= bike.category %></strong>
               <h3 class="mb-0 py-3 fs-4"><%= bike.brand %></h3>
             </div>
+           <p style="color: red; font-size: 30px;"><%= bike.rents.where(status: "waiting").count %> demande en attente</p>
             <div>
               <div class="d-flex align-items-center justify-content-between">
                 <%= link_to bike_path(bike), class: "btn btn-primary button" do %>
