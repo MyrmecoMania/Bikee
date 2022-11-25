@@ -1,18 +1,21 @@
-<div class="container mt-5">
-  <h2 class="text-center">Modifier votre vélo</h2>
-  <div class="col-6 offset-3">
-    <%= simple_form_for(@bike) do |f| %>
-      <%= f.input :category, label:"Categorie" %>
-      <%= f.input :brand, label:"Marque"  %>
-      <%= f.input :address, label: "Adresse",
-                  input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-                  wrapper_html: {data: {controller: "address-autocomplete",
-                  address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-      %>
-      <%= f.input :price_per_day, label:"Prix journalier" %>
-      <%= f.input :status, label: "Available" %>
-      <%= f.input :photos, label:"Photo(s)", as: :file, input_html: { multiple: true } %>
-      <%= f.submit "Modifier mon vélo", class: "btn btn-primary large button" %>
-    <% end %>
+<div class="m-5">
+  <h2 class="text-center">Modifier votre vélo</h2><br>
+  <div class="justify-content-center d-flex">
+    <div class="p-3 bike-form col-4">
+      <%= simple_form_for(@bike) do |f| %>
+        <%= f.input :category, collection: ['gravel', 'éléctrique','route', 'VTT', 'enfant', 'bmx', 'ville', 'autre'], label: "Catégorie", placeholder:"gravel" %>
+        <%= f.input :brand, label:"Marque", placeholder: "Orbea"%>
+        <%= f.input :address, label: "Adresse",
+                    input_html: {data: {address_autocomplete_target: "address"}, class: "input-geocode d-none"},
+                    wrapper_html: {data: {controller: "address-autocomplete",
+                    address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"],
+                    address_autocomplete_address_value: @bike.address}}
+        %>
+        <%= f.input :status, label: "Disponible" %>
+        <%= f.input :price_per_day, label:"Prix journalier", placeholder:"€" %>
+        <%= f.input :photos, label:"Photo(s)", as: :file, input_html: { multiple: true } %>
+        <%= f.submit "Valider la modification", class: "btn btn-confirm large"%>
+      <% end %>
+    </div>
   </div>
 </div>
