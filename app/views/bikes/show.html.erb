@@ -92,14 +92,14 @@
         </div>
       <% else %>
         <% @bike.rents.each do |rent| %>
-          <p>Du <%= rent.start_date %> au <%= rent.end_date %></p>
+          <p>Du <%= rent.start_date.strftime('%d-%m-%Y') %> au <%= rent.end_date.strftime('%d-%m-%Y') %></p>
           <% if rent.user.firstname && rent.user.lastname %>
             <p><%= "#{rent.user.firstname} #{rent.user.lastname}"%></p>
           <% end %>
           <p><%= rent.user.email%></p>
           <% if rent.status == "waiting" %>
-            <%= link_to "Accepte", accepted_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-primary button" %>
-            <%= link_to "Decline", declined_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-primary button" %>
+            <%= link_to "Accepter", accepted_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-primary button" %>
+            <%= link_to "Décliner", declined_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-primary button" %>
           <% elsif rent.status == "Accepted" %>
             <h4>Accepté</h4>
           <% else %>
