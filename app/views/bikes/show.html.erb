@@ -25,7 +25,7 @@
           <p class="card-detais-price">Prix journalier : <%= @bike.price_per_day %> €</p>
           <hr class="pt-2">
           <div class="d-flex justify-content-around">
-            <%= link_to "Modifier", edit_bike_path(@bike), class:"btn btn-confirm rounded" if policy(@rent).edit? %>
+            <%= link_to "Modifier", edit_bike_path(@bike), class:"btn btn-primary button rounded" if policy(@rent).edit? %>
             <% if policy(@rent).create? %>
               <%= simple_form_for [@bike, @rent],
                                   html: {
@@ -61,11 +61,11 @@
                                       </div>
                                     </div>
                                     <div class="d-flex justify-content-center">
-                                      <%= f.submit 'Réserver', class:"btn btn-confirm rounded large p-2" %>
+                                      <%= f.submit 'Réserver', class:"btn btn-primary button rounded large p-2" %>
                                     </div>
                                   <% end %>
             <% end %>
-            <%= button_to "Supprimer", @bike, method: :delete, class:"btn btn-confirm rounded" if policy(@bike).destroy? %>
+            <%= button_to "Supprimer", @bike, method: :delete, class:"btn btn-primary button rounded" if policy(@bike).destroy? %>
           </div>
           <div class="btn btn-back rounded">
           <%= link_to "Retour aux résultats", bikes_path, class: "nav-link" %>
@@ -86,8 +86,8 @@
           <p>Du <%= rent.start_date %> au <%= rent.end_date %></p>
           <p><%= rent.user.email%></p>
           <% if rent.status == "waiting" %>
-            <%= link_to "Accepte", accepted_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-danger" %>
-            <%= link_to "Decline", declined_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-danger" %>
+            <%= link_to "Accepte", accepted_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-primary button" %>
+            <%= link_to "Decline", declined_rent_path(rent), data: {turbo_method: :patch}, class: "btn btn-primary button" %>
           <% elsif rent.status == "Accepted" %>
             <h4>Accepté</h4>
           <% else %>

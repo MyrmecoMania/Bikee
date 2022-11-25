@@ -7,7 +7,7 @@
       <%= text_field_tag :query,
           params[:query],
           class: "form-control mb-3",
-          placeholder: "Trouvez un vélo"
+          placeholder: "Trouvez un vélo par adresse, prix max ou catégorie"
       %>
       <%= submit_tag "Rechercher", class: "btn btn-primary mb-3" %>
     <% end %>
@@ -25,7 +25,11 @@
                     <p><%= bike.address %></p>
                   </div>
                   <div>
-                    <p><%= bike.user.email %></p>
+                    <% unless bike.user.firstname.nil? || bike.user.lastname.nil? %>
+                      <p><%= "#{bike.user.firstname.capitalize} #{bike.user.lastname.capitalize}" %></p>
+                    <% else %>
+                      <p><%= bike.user.email %></p>
+                    <% end %>
                     <div class="d-flex align-items-center text-primary my-3">
                       <strong class="d-inline-block fs-4"><%= bike.price_per_day %>€ </strong>
                       <em class="d-inline-block ms-2">/ jour</em>

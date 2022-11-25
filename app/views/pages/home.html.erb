@@ -9,7 +9,7 @@
 <div class= "container my-5" >
   <%= simple_form_for :query, url: bikes_path, method: :get do |f| %>
     <div class="search-form-control form-group">
-      <input class="form-control string required mb-2 search-field-color" placeholder="Dans quelle ville voulez-vous louer un vélo ?" type="text" name="query" id="search_query" />
+      <input class="form-control string required mb-2 search-field-color" placeholder="Trouvez un vélo par adresse, prix max ou catégorie" type="text" name="query" id="search_query" />
       <button name="button" type="submit" class="btn btn-search btn-flat">
         <i class="fas fa-search"></i> Rechercher
       </button>
@@ -44,7 +44,7 @@
             <%# component bike %>
             <div class="card-product-propietary d-flex flex-column border rounded overflow-hidden h-100 position-relative" onClick="window.open('<%= bike_path(bike) %>')">
               <figure class="p-4 m-0 bg-white d-flex align-items-center justify-content-center overflow-hidden" style="height:250px">
-                <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill, draggable: false %>
+                <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill, draggable: false unless bike.photos.nil? %>
               </figure>
               <div class="d-flex flex-column justify-content-between flex-grow-1 p-4">
                 <div>
