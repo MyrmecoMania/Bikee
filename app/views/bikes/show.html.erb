@@ -1,6 +1,7 @@
 
 <div class="container show-page row">
   <h2 class="text-center mt-4 mb-5">Détails du vélo</h2>
+  <%= link_to "‹‹ Retour aux résultats", edit_bike_path(@bike), class:"offset-2 mb-2"%>
   <div class="col-4 offset-2">
     <div class="card-details p-3 rounded mb-5">
       <div class="card-details-image">
@@ -77,9 +78,6 @@
               <% end %>
               <%= button_to "Supprimer", @bike, method: :delete, class:"btn btn-primary button rounded" if policy(@bike).destroy? %>
             </div>
-          </div>
-          <div class="btn btn-back rounded">
-          <%= link_to "Retour aux résultats", bikes_path, class: "nav-link" %>
           </div>
         </div>
       </div>
