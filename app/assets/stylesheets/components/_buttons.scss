@@ -10,7 +10,7 @@
 
 .btn-home:hover,
 .btn-search:hover,
-.btn-confirm:hover {
+.btn-confirm:hover, {
   background-color: #f4d8cd;
 }
 
@@ -65,4 +65,13 @@
       width: 100%;
     }
   }
+
+.btn-back {
+  color: black;
+  padding: 0;
+}
+
+.btn-back:hover {
+  color: #f15152;
+
 }
