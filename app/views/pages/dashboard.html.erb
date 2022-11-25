@@ -27,35 +27,64 @@
     <h2 class="border-bottom my-5 pb-2">Mes locations</h2>
     <div class="row mb-2">
       <% current_user.rents.each do |rent| %>
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
           <%# component bike %>
-          <div class="border rounded overflow-hidden mb-4 shadow-sm position-relative">
-            <figure class="h-md-250 p-4 bg-white d-flex align-items-center justify-content-center">
-              <%= cl_image_tag rent.bike.photos[0].key, height: 200, crop: :fill, draggable: false unless rent.bike.photos.empty?%>
+          <div class="d-flex flex-column border rounded overflow-hidden h-100 shadow-sm position-relative">
+            <figure class="p-4 m-0 bg-white d-flex align-items-center justify-content-center overflow-hidden" style="height:250px">
+              <%= cl_image_tag rent.bike.photos[0].key, class: "w-100", crop: :fill, draggable: false unless rent.bike.photos.empty?%>
             </figure>
-            <div class="p-4">
-              <strong class="d-inline-block text-secondary"><%= rent.bike.category %></strong>
-              <h3 class="mb-0 py-3"><%= rent.bike.brand %></h3>
-              <% if rent.status == "waiting" %>
-                <h4 class="card-text my-4">En attente</h4>
-              <% elsif rent.status == "Declined" %>
-                <h4 class="card-text my-4">Refusée</h4>
-              <% elsif rent.status == "Accepted" %>
-                <h4 class="card-text my-4">Acceptée</h4>
-              <% end %>
-              <div class="d-flex align-items-center justify-content-between">
-                <%= link_to bike_path(rent.bike), class: "btn btn-primary button" do %>
-                  Voir le détail <i class="fa-solid fa-arrow-right"></i>
-                <% end %>
-                <div class="d-flex align-items-center text-primary">
-                  <strong class="d-inline-block fs-4"><%= rent.bike.price_per_day %>€ </strong>
-                  <em class="d-inline-block ms-2">/ jour</em>
+            <div class="d-flex flex-column justify-content-between flex-grow-1 p-4">
+              <div>
+                <strong class="d-inline-block text-secondary"><%= rent.bike.category %></strong>
+                <h3 class="mb-0 py-3 fs-4"><%= rent.bike.brand %></h3>
+              </div>
+              <div>
+                <p class="border-top border-bottom p-3 w-100 text-center">
+                  <% if rent.status == "waiting" %>
+                    <i class="fa-regular fa-clock me-2 text-warning"></i>En attente
+                  <% elsif rent.status == "Declined" %>
+                    <i class="fa-regular fa-circle-xmark me-2 text-danger"></i>Refusée
+                  <% elsif rent.status == "Accepted" %>
+                    <i class="fa-regular fa-circle-check me-2 text-success"></i>Acceptée
+                  <% end %>
+                </p>
+                <div class="d-flex align-items-center justify-content-between">
+                  <%= link_to bike_path(rent.bike), class: "btn btn-primary button" do %>
+                    Voir le détail <i class="fa-solid fa-arrow-right"></i>
+                  <% end %>
+                  <div class="d-flex align-items-center text-primary">
+                    <strong class="d-inline-block fs-4"><%= rent.bike.price_per_day %>€ </strong>
+                    <em class="d-inline-block ms-2">/ jour</em>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       <% end %>
+
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <%# component bike %>
+        <div class="d-flex flex-column border rounded overflow-hidden h-100 shadow-sm position-relative">
+          <figure class="p-4 m-0 bg-white d-flex align-items-center justify-content-center overflow-hidden" style="height:250px">
+            <img src="https://c4.wallpaperflare.com/wallpaper/309/484/960/nature-bicycle-wallpaper-preview.jpg" draggable="false" />
+          </figure>
+          <div class="d-flex flex-column justify-content-between flex-grow-1 p-4">
+            <div>
+              <strong class="d-inline-block text-secondary">Location</strong>
+              <h3 class="mb-0 py-3 fs-4">Louer un vélo</h3>
+              <p>Il est temps de ressortir préparer votre prochaine escapade.</p>
+            </div>
+            <div>
+              <div class="d-flex align-items-center justify-content-between">
+                <%= link_to bikes_path, class: "btn btn-primary w-100 button" do %>
+                  Réserver <i class="fa-solid fa-arrow-right"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 
@@ -63,22 +92,26 @@
   <h2 class="border-bottom my-5 pb-2">Mes offres</h2>
   <div class="row mb-2">
     <% current_user.bikes.each do |bike| %>
-      <div class="col-12 col-md-6 col-lg-4">
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
         <%# component bike %>
-        <div class="border rounded overflow-hidden mb-4 shadow-sm position-relative">
-          <figure class="h-md-250 p-4 bg-white d-flex align-items-center justify-content-center">
-            <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill, draggable: false unless bike.photos.empty? %>
+        <div class="d-flex flex-column border rounded overflow-hidden h-100 shadow-sm position-relative">
+          <figure class="p-4 m-0 bg-white d-flex align-items-center justify-content-center overflow-hidden" style="height:250px">
+            <%= cl_image_tag bike.photos[0].key, class: "w-100", crop: :fill, draggable: false unless bike.photos.empty? %>
           </figure>
-          <div class="p-4">
-            <strong class="d-inline-block text-secondary"><%= bike.category %></strong>
-            <h3 class="mb-0 py-3"><%= bike.brand %></h3>
-            <div class="d-flex align-items-center justify-content-between">
-              <%= link_to bike_path(bike), class: "btn btn-primary button" do %>
-                Voir le détail <i class="fa-solid fa-arrow-right"></i>
-              <% end %>
-              <div class="d-flex align-items-center text-primary">
-                <strong class="d-inline-block fs-4"><%= bike.price_per_day %>€ </strong>
-                <em class="d-inline-block ms-2">/ jour</em>
+          <div class="d-flex flex-column justify-content-between flex-grow-1 p-4">
+            <div>
+              <strong class="d-inline-block text-secondary"><%= bike.category %></strong>
+              <h3 class="mb-0 py-3 fs-4"><%= bike.brand %></h3>
+            </div>
+            <div>
+              <div class="d-flex align-items-center justify-content-between">
+                <%= link_to bike_path(bike), class: "btn btn-primary button" do %>
+                  Voir le détail <i class="fa-solid fa-arrow-right"></i>
+                <% end %>
+                <div class="d-flex align-items-center text-primary">
+                  <strong class="d-inline-block fs-4"><%= bike.price_per_day %>€ </strong>
+                  <em class="d-inline-block ms-2">/ jour</em>
+                </div>
               </div>
             </div>
           </div>
