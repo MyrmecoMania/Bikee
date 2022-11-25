@@ -7,10 +7,10 @@ class BikesController < ApplicationController
     if params[:query].present?
       if /\d{2}/.match?(params[:query].strip)
         sql_query = "price_per_day <= :query"
-        @bikes = policy_scope(Bike.where(sql_query, query: "#{params[:query].to_i}"))
+        @bikes = policy_scope(Bike.where(sql_query, query: params[:query].to_s))
       else
         sql_query = "address ILIKE :query OR category ILIKE :query"
-        @bikes = policy_scope(Bike.where(sql_query, query: "%#{params[:query]}%"))
+        @bikes = policy_scope(Bike.where(sql_query, query: "%#{params[:query].strip}%"))
       end
     else
       @bikes = policy_scope(Bike)
@@ -49,7 +49,6 @@ class BikesController < ApplicationController
     @bike = Bike.new(bike_params)
     @bike.user = current_user
     authorize @bike
-
     if @bike.save
       redirect_to bike_path(@bike)
     else
