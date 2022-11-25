@@ -67,6 +67,9 @@
             <% end %>
             <%= button_to "Supprimer", @bike, method: :delete, class:"btn btn-primary button rounded" if policy(@bike).destroy? %>
           </div>
+          <div class="btn btn-back rounded">
+          <%= link_to "Retour aux résultats", bikes_path, class: "nav-link" %>
+          </div>
         </div>
       </div>
     </div>
