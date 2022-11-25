@@ -61,3 +61,4 @@ user_prefix.each do |el|
     bike.save
   end
 end
+Rent.create(start_date: "2022-11-25", end_date: "2022-11-30", user: User.all.last, bike: Bike.all.first)
