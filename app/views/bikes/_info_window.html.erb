@@ -1,5 +1,5 @@
 <div class="mapboxgl-popup-content-image px-2">
-  <%= cl_image_tag bike.photos.first.key, width: "150px", class: "rounded", draggable: false %>
+  <%= cl_image_tag bike.photos.first.key, width: "150px", class: "rounded", draggable: false unless bike.photos.empty? %>
 </div>
 <div class="mapboxgl-popup-content-body py-2 px-2">
   <h2><%= bike.category %></h2>
