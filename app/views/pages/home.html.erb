@@ -42,7 +42,7 @@
         <% Bike.all.shuffle[1..3].each do |bike| %>
           <div class="col-12 col-md-6 col-lg-4 my-4">
             <%# component bike %>
-            <div class="card-product-propietary d-flex flex-column border rounded overflow-hidden h-100 position-relative" onClick="window.open('<%= bike_path(bike) %>')">
+            <%= link_to bike_path(bike), class:"card-product-propietary d-flex flex-column border rounded overflow-hidden h-100 position-relative" do %>
               <figure class="p-4 m-0 bg-white d-flex align-items-center justify-content-center overflow-hidden" style="height:250px">
                 <% unless bike.photos.nil? %>
                   <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill, draggable: false %>
@@ -69,7 +69,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
     </div>
