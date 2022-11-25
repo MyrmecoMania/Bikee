@@ -14,9 +14,9 @@
             <a href="#">
               <div class="footerSection__link">Comment ça marche?</div>
             </a>
-            <a href="bikes">
-              <div class="footerSection__link">Louer mon vélo</div>
-            </a>
+            <%= link_to "#new_movie_modal", :class => "footerSection__link", "data-bs-toggle" => "modal" do %>
+              <div class="footerSection__link">Mettre mon vélo en location</div>
+            <% end %>
           </div>
         </div>
       </div>
@@ -45,13 +45,13 @@
         <div class="footerSection justify-content-center align-items-center">
           <div class ="footerSection__title">Nos Vélos</div>
           <div class = "footerSection__list">
-            <a href="#">
-              <div class="footerSection__link">Vélos de cyclo-tourisme</div>
+            <a href="bikes?query=gravel&button=">
+              <div class="footerSection__link">Vélos de gravel</div>
             </a>
-            <a href="#">
+            <a href="bikes?query=routes&button=">
               <div class="footerSection__link">Vélos de route</div>
             </a>
-            <a href="#">
+            <a href="bikes?query=electriques&button=">
               <div class="footerSection__link">Vélos éléctriques</div>
             </a>
           </div>
