@@ -99,10 +99,14 @@
           </figure>
           <div class="d-flex flex-column justify-content-between flex-grow-1 p-4">
             <div>
+            <div class="d-flex justify-content-between">
               <strong class="d-inline-block text-secondary"><%= bike.category %></strong>
-              <h3 class="mb-0 py-3 fs-4"><%= bike.brand %></h3>
+              <% if bike.rents.where(status: "waiting").count > 0 %>
+                <p style="color: red; font-size: 20px;"><%= bike.rents.where(status: "waiting").count %> demande en attente</p>
+              <% end %>
             </div>
-           <p style="color: red; font-size: 30px;"><%= bike.rents.where(status: "waiting").count %> demande en attente</p>
+              <h3 class="mb-0 pb-3 fs-4"><%= bike.brand %></h3>
+            </div>
             <div>
               <div class="d-flex align-items-center justify-content-between">
                 <%= link_to bike_path(bike), class: "btn btn-primary button" do %>
