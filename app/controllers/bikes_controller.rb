@@ -1,7 +1,7 @@
 class BikesController < ApplicationController
   before_action :set_bike, only: %i[show edit destroy update]
   before_action :set_new_bike
-  # skip_before_action :authenticate_user!, only: %i[show index]
+  skip_before_action :authenticate_user!, only: %i[index]
 
   def index
     if params[:query].present?
