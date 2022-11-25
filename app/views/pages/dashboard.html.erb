@@ -34,9 +34,12 @@
               <%= cl_image_tag rent.bike.photos[0].key, class: "w-100", crop: :fill, draggable: false unless rent.bike.photos.empty?%>
             </figure>
             <div class="d-flex flex-column justify-content-between flex-grow-1 p-4">
-              <div>
-                <strong class="d-inline-block text-secondary"><%= rent.bike.category %></strong>
-                <h3 class="mb-0 py-3 fs-4"><%= rent.bike.brand %></h3>
+              <div class="d-flex justify-content-between">
+                <div class="d-inline-block text-secondary">
+                  <strong><%= rent.bike.category %></strong>
+                  <h3 class="mb-0 py-3 fs-4"><%= rent.bike.brand %></h3>
+                </div>
+                <p class="text-secondary">Du <%= rent.start_date %> au <%= rent.end_date %></p>
               </div>
               <div>
                 <p class="border-top border-bottom p-3 w-100 text-center">
