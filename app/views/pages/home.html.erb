@@ -44,7 +44,9 @@
             <%# component bike %>
             <div class="card-product-propietary d-flex flex-column border rounded overflow-hidden h-100 position-relative" onClick="window.open('<%= bike_path(bike) %>')">
               <figure class="p-4 m-0 bg-white d-flex align-items-center justify-content-center overflow-hidden" style="height:250px">
-                <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill, draggable: false unless bike.photos.nil? %>
+                <% unless bike.photos.nil? %>
+                  <%= cl_image_tag bike.photos[0].key, height: 200, crop: :fill, draggable: false %>
+                <% end %>
               </figure>
               <div class="d-flex flex-column justify-content-between flex-grow-1 p-4">
                 <div>
