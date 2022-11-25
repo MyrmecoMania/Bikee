@@ -8,22 +8,70 @@
   background-color: #f15152;
 }
 
-.btn-home:hover {
+.btn-home:hover,
+.btn-search:hover,
+.btn-confirm:hover, {
   background-color: #f4d8cd;
 }
 
-.btn-search {
+.btn-search, .btn-confirm {
   background-color: #f15152;
 }
 
-.btn-search:hover {
-  background-color: #f4d8cd;
+
+.card-product-propietary {
+  // border:none;
+  background-color: #f4f4f4;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    box-shadow: none;
+    // border: 1px solid #fff;
+  }
 }
 
-.btn-confirm {
-  background-color: #f15152;
+.button {
+  display: inline-block;
+  color: #fff;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $primary;
+    z-index: -2;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: darken($primary, 15%);
+    transition: all .3s;
+    z-index: -1;
+  }
+  &:hover {
+    color: #fff;
+    &:before {
+      width: 100%;
+    }
+  }
+
+.btn-back {
+  color: black;
+  padding: 0;
 }
 
-.btn-confirm:hover {
-  background-color: #f4d8cd;
+.btn-back:hover {
+  color: #f15152;
+
 }
