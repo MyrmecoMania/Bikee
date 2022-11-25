@@ -25,7 +25,7 @@
     </div>
   <% else %>
     <h2 class="border-bottom my-5 pb-2">Mes locations</h2>
-    <div class="row mb-2">
+    <div class="row mb-2 horizontal-scroll">
       <% current_user.rents.each do |rent| %>
         <div class="col-12 col-md-6 col-lg-4 mb-4">
           <%# component bike %>
@@ -90,7 +90,7 @@
 
 
   <h2 class="border-bottom my-5 pb-2">Mes offres</h2>
-  <div class="row mb-2">
+  <div class="row mb-2 horizontal-scroll">
     <% current_user.bikes.each do |bike| %>
       <div class="col-12 col-md-6 col-lg-4 mb-4">
         <%# component bike %>
