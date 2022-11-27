@@ -1,5 +1,5 @@
 <div style="z-index: 2000" class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
-  <div class="container">
+  <div class="container-fluid px-5">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo-bikee.png" %>
     <% end %>
@@ -24,13 +24,13 @@
             </li>
           <% else %>
             <li class="nav-item dropdown">
-            <% if current_user.photo.key.nil? %>
-              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://media.istockphoto.com/id/1337144146/fr/vectoriel/vecteur-dic%C3%B4ne-de-profil-davatar-par-d%C3%A9faut.jpg?b=1&s=170667a&w=0&k=20&c=eYsURDWBMsbvhjRxVQ8-pgC0q4b04DSYbCMnY5OlH14=" />
-            <% else %>
-              <div class="avatar-image dropdown-toggle" id="navbarDropdown" aria-hashpopup="true" aria-expanded="false" data-bs-toggle="dropdown">
-                <%= cl_image_tag current_user.photo.key  %>
-              </div>
-            <% end %>
+              <% if current_user.photo.key.nil? %>
+                <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://media.istockphoto.com/id/1337144146/fr/vectoriel/vecteur-dic%C3%B4ne-de-profil-davatar-par-d%C3%A9faut.jpg?b=1&s=170667a&w=0&k=20&c=eYsURDWBMsbvhjRxVQ8-pgC0q4b04DSYbCMnY5OlH14=" />
+              <% else %>
+                <div class="avatar-image dropdown-toggle" id="navbarDropdown" aria-hashpopup="true" aria-expanded="false" data-bs-toggle="dropdown">
+                  <%= cl_image_tag current_user.photo.key  %>
+                </div>
+              <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Mon compte", dashboard_path, class: "dropdown-item border-bottom p-2" %>
                 <%= link_to "Deconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item p-2" %>
